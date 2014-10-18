@@ -12,10 +12,8 @@
       (propertize "%02l" 'face 'font-lock-type-face) ","
       (propertize "%02c" 'face 'font-lock-type-face)
     ;;"] "
-      "   "
-
     ;; relative position, size of file
-    ;;"["
+    " -- "
     (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
     " "
     (propertize "%I" 'face 'font-lock-constant-face) ;; size
@@ -50,11 +48,16 @@
     "  "
 
     ;; add the time, with the date and the emacs uptime in the tooltip
-    '(:eval (propertize (format-time-string "%H:%M ")
-              'help-echo
-              (concat (format-time-string "%c; ")
-                      (emacs-uptime "Uptime:%hh"))))
-    " --"
+    ;; '(:eval (propertize (format-time-string "%H:%M ")
+    ;;           'help-echo
+    ;;           (concat (format-time-string "%c; ")
+    ;;                   (emacs-uptime "Uptime:%hh"))))
+
+    ;; vc
+    " -- "
+    `(vc-mode vc-mode)
+
+
 
     ;; i don't want to see minor-modes; but if you want, uncomment this:
     ;; minor-mode-alist  ;; list of minor modes
@@ -62,7 +65,8 @@
     ))
 
 
-;; %b -- print buffer name.      %f -- print visited file name.
+;;   %b -- print buffer name.
+;;   %f -- print visited file name.
 ;;   %F -- print frame name.
 ;;   %* -- print %, * or hyphen.   %+ -- print *, % or hyphen.
 ;;         %& is like %*, but ignore read-only-ness.

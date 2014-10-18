@@ -8,5 +8,4 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ; after save hooks
-;(add-hook 'after-save-hook 'byte-compile-current-buffer)
-(add-hook 'after-save-hook (when (equal major-mode 'Emacs-Lisp) 'byte-compile-current-buffer))
+(add-hook 'after-save-hook 'byte-compile-current-buffer)

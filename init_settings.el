@@ -1,5 +1,11 @@
 ;; -*- coding: utf-8 -*-
 
+;; end files with a newline
+(setq require-final-newline t)
+
+;; scroll one line at a time
+(setq scroll-step 1)
+
 ;; initial major mode, text, instead of lisp
 (setq initial-major-mode (quote text-mode))
 
@@ -7,11 +13,12 @@
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs_backup")))
 
 ;; Save all backup file in this directory.
-(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/emacs_backup/"))))
+;(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/emacs_backup/"))))
 
 ;; no toolbar
-;;(tool-bar-mode -1) ;; No Toolbar!
-(menu-bar-mode -1) ;; Yes Menubar!
+;;(tool-bar-mode -1)
+ ;; no menubar!
+(menu-bar-mode -1)
 
 ;; yes or no to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -48,7 +55,7 @@
 ;; show matching parens by default
 (show-paren-mode t)
 
-;; or i can use electric mode since emacs24
+;; automatic pair insert
 (electric-pair-mode 1)
 
  ; display line numbers in margin. New in Emacs 23
@@ -59,7 +66,7 @@
 
 ; keep a list of recently opened files
 (recentf-mode 1)
-
+(setq-default recent-save-file "~/.emacs.d/recentf")
 ; 1 for on, 0 for off | to have lines soft wrapped at word boundary
 (global-visual-line-mode 1)
 
@@ -70,7 +77,7 @@
 (setq-default tab-width 2) ; emacs 23.1, 24.2, default to 8
 
 ;; set current buffer's tab char's display width to 4 spaces
-(setq tab-width 4)
+(setq-default tab-width 4)
 
 ;; make return key also do indent, for current buffer only
 ;;(electric-indent-local-mode 1)
@@ -124,8 +131,12 @@ display-time-mail-file nil)
 ;; custom scratch message
 (setq initial-scratch-message ";; I am your editor, please describe your program.\n")
 
-;; automatically show completions for execute-extended-command
+;; automatically show completions for all prompts
+;; t does auto completion for any command that prompts for a list of completions
 (icomplete-mode 1)
+
+;; show completion and mode for find file and switch to buffer
+(ido-mode 1)
 
 ;; turn on abbrev mode globally, not really sure
 (setq-default abbrev-mode t)
@@ -137,3 +148,15 @@ display-time-mail-file nil)
 (set-face-attribute hl-line-face nil :underline t)
 (set-face-foreground 'highlight nil)
 (set-face-background 'highlight nil)
+
+;; dired, display file size in metric prifex of k,
+;; and display date in yyyy-mm-dd | when in dired, C-u s to change listing option
+(setq dired-listing-switches "-Al --si --time-style long-iso")
+
+;; abbrev
+(setq abbrev-file-name             ;; tell emacs where to read abbrev
+        "~/.emacs.d/abbrev_defs")    ;; definitions from...
+
+;; save abbrevs when files are saved
+;; you will be asked before the abbreviations are saved
+(setq save-abbrevs t)

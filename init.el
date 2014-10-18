@@ -9,3 +9,4 @@
 (load "init_hooks")
 (load "init_mail")
 (load "init_modeline")
+(load "init_python")

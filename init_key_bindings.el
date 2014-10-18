@@ -2,25 +2,33 @@
 
 ;; emacs customization for command aliases and keybindings
 
+
+ (setq x-select-enable-clipboard t)
+
 ;; create new empty buffer
 (global-set-key (kbd "C-n") 'my-empty-buffer)
 
-;; M-x remapped to f8 keky
-(global-set-key (kbd "<f8>") 'execute-extended-command)
+;; next/previous user buffer
+(global-set-key (kbd "<f8>") 'my-previous-user-buffer)
+(global-set-key (kbd "<f9>") 'my-next-user-buffer)
+
+;; navigation by sexp
+(global-set-key (kbd "M-<up>") 'backward-sexp)
+(global-set-key (kbd "M-<down>") 'forward-sexp)
 
 ;; Linux, menu/apps key
 (global-set-key (kbd "<apps>") 'execute-extended-command)
 
-;; split vertically
+;; split vertically| & horizontally--
 (global-set-key (kbd "M-|") 'split-window-horizontally)
-
-;; split horizontally
 (global-set-key (kbd "M--") 'split-window-vertically)
 
 ;; describe function, mode, key, apropos command
 (global-set-key (kbd "<f2> f") 'describe-function)
 (global-set-key (kbd "<f2> m") 'describe-mode)
 (global-set-key (kbd "<f2> k") 'describe-key)
+(global-set-key (kbd "<f2> v") 'describe-variable)
+
 (global-set-key (kbd "<f2> a") 'apropos-command)
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region) ;; (un)comment
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
@@ -35,11 +43,6 @@
 (defalias 'rb 'revert-buffer)
 (defalias 'g 'grep)
 (defalias 'mgs 'magit-status)
-(defalias 'ddg 'ddg)
+(defalias 'detach 'delete-frame) ;; C-x 5 0
 
-;; abbrev
-(setq abbrev-file-name             ;; tell emacs where to read abbrev
-        "~/.emacs.d/abbrev_defs")    ;; definitions from...
-
-(setq save-abbrevs t)              ;; save abbrevs when files are saved
-                                     ;; you will be asked before the abbreviations are saved
+;(defalias 'ipl ('describe-variable package-activated-list))
