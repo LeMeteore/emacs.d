@@ -1,5 +1,20 @@
 ;; -*- coding: utf-8 -*-
 
+;; function to return the name of the parent directory of the currently visited file
+(defun buffer-file-parent-directory ()
+  ;; if the buffer is visiting a file
+  (when buffer-file-name
+    (concat "[" (file-name-nondirectory (directory-file-name (file-name-directory buffer-file-name))) "]")))
+
+
+;; define function to shutdown emacs server instance
+(defun server-shutdown ()
+  "Save buffers, Quit, and Shutdown (kill) server"
+  (interactive)
+  (save-some-buffers)
+  (kill-emacs)
+  )
+
 ;;
 (defun byte-compile-current-buffer ()
   "`byte-compile' current buffer if it's emacs-lisp-mode and compiled file exists."
@@ -121,3 +136,34 @@
   (let ((i 0))
     (while (and (string-equal "*" (substring (buffer-name) 0 1)) (< i 20))
       (setq i (1+ i)) (previous-buffer))))
+
+(defun my-copy-line-or-region ()
+  "Copy current line, or text selection.
+When `universal-argument' is called first, copy whole buffer (but respect `narrow-to-region')."
+  (interactive)
+  (let (p1 p2)
+    (if (null current-prefix-arg)
+        (progn (if (use-region-p)
+                   (progn (setq p1 (region-beginning))
+                          (setq p2 (region-end)))
+                 (progn (setq p1 (line-beginning-position))
+                        (setq p2 (line-end-position)))))
+      (progn (setq p1 (point-min))
+             (setq p2 (point-max))))
+    (kill-ring-save p1 p2)))
+
+
+(defun my-cut-line-or-region ()
+  "Cut current line, or text selection.
+When `universal-argument' is called first, cut whole buffer (but respect `narrow-to-region')."
+  (interactive)
+  (let (p1 p2)
+    (if (null current-prefix-arg)
+        (progn (if (use-region-p)
+                   (progn (setq p1 (region-beginning))
+                          (setq p2 (region-end)))
+                 (progn (setq p1 (line-beginning-position))
+                        (setq p2 (line-beginning-position 2)))))
+      (progn (setq p1 (point-min))
+             (setq p2 (point-max))))
+    (kill-region p1 p2)))

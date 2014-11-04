@@ -1,11 +1,18 @@
 ;; -*- coding: utf-8 -*-
 
+
+;; (setq-default mode-line-buffer-identification
+;;       (cons (car mode-line-buffer-identification) '((:eval (buffer-file-parent-directory)))))
+
+
 ;; use setq-default to set it for /all/ modes, setq otherwise
 (setq-default mode-line-format
   (list
     ;; the buffer name; the file name as a tool tip
     '(:eval (propertize "%b " 'face 'font-lock-keyword-face
         'help-echo (buffer-file-name)))
+
+   ;;'(:eval (buffer-file-parent-directory))
 
     ;; line and column
     " -- ";;"[" ;; '%02' to set to 2 chars at least; prevents flickering
