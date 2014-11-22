@@ -1,6 +1,6 @@
 ;; -*- coding: utf-8 -*-
 
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 (load "init_elisp_functions")
 (load "init_settings")
