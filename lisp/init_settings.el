@@ -133,10 +133,10 @@ display-time-mail-file nil)
 
 ;; automatically show completions for all prompts
 ;; t does auto completion for any command that prompts for a list of completions
-(icomplete-mode 1)
+;; (icomplete-mode 1)
 
 ;; show completion and mode for find file and switch to buffer
-(ido-mode 1)
+;; (ido-mode 1)
 
 ;; turn on abbrev mode globally, not really sure
 (setq-default abbrev-mode t)
