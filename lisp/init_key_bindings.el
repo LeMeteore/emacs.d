@@ -34,6 +34,7 @@
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
 
 ;; shortening of often used commands
+(defalias 'list-buffers 'ibuffer)
 (defalias 'psql 'sql-postgres)
 (defalias 'wsc 'whitespace-cleanup)
 (defalias 'fd 'find-dired)
