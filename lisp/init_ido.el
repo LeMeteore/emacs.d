@@ -22,3 +22,14 @@
 ;;  customize the order in which files are sorted
 ;; when Ido displays them in the minibuffer
 (setq ido-file-extensions-order '(".txt" ".py" ".el" ".emacs" ".json" ".ini" ".cfg" ".cnf"))
+
+
+(global-set-key
+ "\M-x"
+ (lambda ()
+   (interactive)
+   (call-interactively
+    (intern
+     (ido-completing-read
+      "M-x "
+      (all-completions "" obarray 'commandp))))))

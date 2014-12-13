@@ -136,7 +136,7 @@ display-time-mail-file nil)
 ;; (icomplete-mode 1)
 
 ;; show completion and mode for find file and switch to buffer
-;; (ido-mode 1)
+(ido-mode 1)
 
 ;; turn on abbrev mode globally, not really sure
 (setq-default abbrev-mode t)

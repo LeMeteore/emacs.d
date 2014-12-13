@@ -14,3 +14,4 @@
 (load "init_modeline")
 (load "init_python")
 (load "init_ido")
+(load "init_mail")
