@@ -47,3 +47,8 @@
 (defalias 'detach 'delete-frame) ;; C-x 5 0
 
 ;(defalias 'ipl ('describe-variable package-activated-list))
+
+(global-set-key (kbd "<f2> <left>")  'windmove-left)
+(global-set-key (kbd "<f2> <right>") 'windmove-right)
+(global-set-key (kbd "<f2> <up>")    'windmove-up)
+(global-set-key (kbd "<f2> <down>")  'windmove-down)
