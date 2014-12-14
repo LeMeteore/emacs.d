@@ -1,5 +1,10 @@
 ;; -*- coding: utf-8 -*-
 
+;; for being able to 'uu' for 'undo
+(require 'key-chord)
+(key-chord-mode 1)
+
+
 ;; end files with a newline
 (setq require-final-newline t)
 

@@ -52,3 +52,7 @@
 (global-set-key (kbd "<f2> <right>") 'windmove-right)
 (global-set-key (kbd "<f2> <up>")    'windmove-up)
 (global-set-key (kbd "<f2> <down>")  'windmove-down)
+
+(key-chord-define-global "uu"     'undo)
+(key-chord-define-global "ff"     'find-file)
+(key-chord-define-global "dd"     'dired)

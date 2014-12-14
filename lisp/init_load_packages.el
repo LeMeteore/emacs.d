@@ -10,13 +10,14 @@
 ;;(setq package-enable-at-startup nil)
 (package-initialize)
 
-
+;; find list of installed package w/
+;; describe-variable package-activated-list
 (defvar my-packages
   '(color-theme db-pg db kv magit-push-remote magit-tramp
                 magit git-rebase-mode git-commit-mode pg
                 pretty-lambdada projectile pkg-info epl dash
                 python-mode rich-minority s yasnippet yasnippet-bundle
-                use-package)
+                use-package key-chord)
   "A list of packages to ensure are installed at launch.")
 
 
