@@ -85,10 +85,10 @@
 (setq-default tab-width 4)
 
 ;; make return key also do indent, for current buffer only
-;;(electric-indent-local-mode 1)
+(electric-indent-local-mode nil)
 
 ;; make return key also do indent, globally, not so cool
-;; (electric-indent-mode 1)
+(electric-indent-mode nil)
 
 ;; me
 (setq user-full-name "Nsukami _")
