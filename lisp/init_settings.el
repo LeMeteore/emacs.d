@@ -4,6 +4,10 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
+;; guide key
+(require 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+(guide-key-mode 1)  ; Enable guide-key-mode
 
 ;; end files with a newline
 (setq require-final-newline t)
