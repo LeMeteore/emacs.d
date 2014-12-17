@@ -2,7 +2,6 @@
 
 (defun git-add-current-buffer ()
   "call 'git add [current-buffer]'"
-
   (interactive)
   (let* ((buffile (buffer-file-name))
           (output (shell-command-to-string

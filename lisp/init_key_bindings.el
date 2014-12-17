@@ -57,4 +57,4 @@
 (key-chord-define-global "zz"     'undo)
 (key-chord-define-global "yy"     'redo)
 (key-chord-define-global "vv"     'find-file)
-(key-chord-define-global "hh"     '(dired "~"))
+(key-chord-define-global "hh"     'dired)
