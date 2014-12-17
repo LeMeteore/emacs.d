@@ -36,6 +36,14 @@
              (file-exists-p (byte-compile-dest-file buffer-file-name)))
     (byte-compile-file buffer-file-name)))
 
+(defun auto-recompile-elisp-file ()
+  (interactive)
+  (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
+    (let ((byte-file (concat buffer-file-name "\\.elc")))
+      (if (or (not (file-exists-p byte-file))
+              (file-newer-than-file-p buffer-file-name byte-file))
+          (byte-compile-file buffer-file-name)))))
+
 ;; (defun my-date-again ()
 ;;   "insert date"
 ;;   (interactive)

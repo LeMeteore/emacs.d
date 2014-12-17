@@ -1,5 +1,9 @@
 ;; -*- coding: utf-8 -*-
 
+;; move text
+(require 'move-text)
+(move-text-default-bindings)
+
 ;; for being able to 'uu' for 'undo
 (require 'key-chord)
 (key-chord-mode 1)

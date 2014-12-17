@@ -12,12 +12,7 @@
 (global-set-key (kbd "<f8>") 'my-previous-user-buffer)
 (global-set-key (kbd "<f9>") 'my-next-user-buffer)
 
-;; navigation by sexp
-(global-set-key (kbd "M-<up>") 'backward-sexp)
-(global-set-key (kbd "M-<down>") 'forward-sexp)
 
-;; Linux, menu/apps key
-(global-set-key (kbd "<apps>") 'execute-extended-command)
 
 ;; split vertically| & horizontally--
 (global-set-key (kbd "M-|") 'split-window-horizontally)
@@ -33,6 +28,11 @@
 (global-set-key (kbd "<f2> w") 'where-is)
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region) ;; (un)comment
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
+;; navigation by sexp
+(global-set-key (kbd "<f2> <up>") 'backward-sexp)
+(global-set-key (kbd "<f2> <down>") 'forward-sexp)
+
+
 
 ;; shortening of often used commands
 (defalias 'list-buffers 'ibuffer)
@@ -57,4 +57,4 @@
 (key-chord-define-global "zz"     'undo)
 (key-chord-define-global "yy"     'redo)
 (key-chord-define-global "vv"     'find-file)
-(key-chord-define-global "ii"     'dired)
+(key-chord-define-global "hh"     '(dired "~"))

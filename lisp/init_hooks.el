@@ -8,4 +8,4 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ; after save hooks
-(add-hook 'after-save-hook 'byte-compile-current-buffer)
+(add-hook 'after-save-hook 'auto-recompile-elisp-file)
