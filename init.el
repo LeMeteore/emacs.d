@@ -3,7 +3,6 @@
 ;; then you need to call (package-initialize) beforehand.
 ;;(setq package-enable-at-startup nil)
 (package-initialize)
-
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (load "init_load_packages")

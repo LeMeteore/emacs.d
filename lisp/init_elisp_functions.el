@@ -108,21 +108,21 @@
           (kill-process process)))))
 
 
-;; (defun ddg ()
-;;   "Look up the word under cursor or selected region in ddg. This command switches you to firefox."
-;;  (interactive)
-;;  ;; myWord & myUrl variables
-;;  (let (myWord myUrl)
-;;    ;; myWord is selected region or word the point is under
-;;    (setq myWord
-;;          (if (use-region-p)
-;;              (buffer-substring-no-properties (region-beginning) (region-end))
-;;            (thing-at-point 'symbol)))
-;;    ;; replace space by plus in the word
-;;   (setq myWord (replace-regexp-in-string " " "+" myWord))
-;;   (setq myUrl (concat "https://duckduckgo.com/?t=lm&q=" myWord))
-;;   (browse-url-firefox myUrl)
-;;    ))
+(defun ddg ()
+  "Look up the word under cursor or selected region in ddg. This command switches you to firefox."
+ (interactive)
+ ;; myWord & myUrl variables
+ (let (myWord myUrl)
+   ;; myWord is selected region or word the point is under
+   (setq myWord
+         (if (use-region-p)
+             (buffer-substring-no-properties (region-beginning) (region-end))
+           (thing-at-point 'symbol)))
+   ;; replace space by plus in the word
+  (setq myWord (replace-regexp-in-string " " "+" myWord))
+  (setq myUrl (concat "https://duckduckgo.com/?t=lm&q=" myWord))
+  (browse-url-firefox myUrl)
+   ))
 
 (defun duckduckgo (what)
   "Use ddg to search for WHAT."
