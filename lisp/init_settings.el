@@ -173,3 +173,24 @@ display-time-mail-file nil)
 ;; save abbrevs when files are saved
 ;; you will be asked before the abbreviations are saved
 (setq save-abbrevs t)
+
+
+; Openwith
+(openwith-mode t)
+(setq openwith-associations
+      (list (list (openwith-make-extension-regexp '("pdf"))
+                  "evince" '(file))
+            (list (openwith-make-extension-regexp '("flac" "mp3" "wav"))
+                  "vlc" '(file))
+            (list (openwith-make-extension-regexp '("avi" "flv" "mov" "mp4"
+                                                    "mpeg" "mpg" "ogg" "wmv"))
+                  "vlc" '(file))
+            (list (openwith-make-extension-regexp '("bmp" "jpeg" "jpg" "png"))
+                  "ristretto" '(file))
+            (list (openwith-make-extension-regexp '("doc" "docx" "odt"))
+                  "libreoffice" '("--writer" file))
+            (list (openwith-make-extension-regexp '("ods" "xls" "xlsx"))
+                  "libreoffice" '("--calc" file))
+            (list (openwith-make-extension-regexp '("odp" "pps" "ppt" "pptx"))
+                  "libreoffice" '("--impress" file))
+            ))

@@ -17,7 +17,8 @@
                 magit git-rebase-mode git-commit-mode pg
                 pretty-lambdada projectile pkg-info epl dash
                 python-mode rich-minority s yasnippet yasnippet-bundle
-                use-package key-chord undo-tree guide-key move-text)
+                use-package key-chord undo-tree guide-key move-text
+                openwith)
   "A list of packages to ensure are installed at launch.")
 
 
