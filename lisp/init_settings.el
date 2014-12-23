@@ -199,3 +199,7 @@ display-time-mail-file nil)
 (setq ag-highlight-search t)
 (setq ag-executable "/usr/local/bin/ag")
 (setq ag-reuse-window 't)
+
+;; aggressive indent
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+(add-hook 'python-mode-hook #'aggressive-indent-mode)

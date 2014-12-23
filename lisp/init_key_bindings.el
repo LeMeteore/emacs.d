@@ -59,3 +59,7 @@
 (key-chord-define-global "vv"     'find-file)
 (key-chord-define-global "hh"     'dired)
 (key-chord-define-global "qq"     'ddg)
+
+(global-set-key "\M-9" 'backward-sexp)
+(global-set-key "\M-0" 'forward-sexp)
+(global-set-key "\M-1" 'delete-other-windows)
