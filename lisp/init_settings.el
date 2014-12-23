@@ -194,3 +194,8 @@ display-time-mail-file nil)
             (list (openwith-make-extension-regexp '("odp" "pps" "ppt" "pptx"))
                   "libreoffice" '("--impress" file))
             ))
+
+;; ag
+(setq ag-highlight-search t)
+(setq ag-executable "/usr/local/bin/ag")
+(setq ag-reuse-window 't)

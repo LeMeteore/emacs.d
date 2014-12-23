@@ -18,7 +18,7 @@
                 pretty-lambdada projectile pkg-info epl dash
                 python-mode rich-minority s yasnippet yasnippet-bundle
                 use-package key-chord undo-tree guide-key move-text
-                openwith)
+                openwith ack ag)
   "A list of packages to ensure are installed at launch.")
 
 
