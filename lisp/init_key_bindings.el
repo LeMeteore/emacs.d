@@ -28,6 +28,8 @@
 (global-set-key (kbd "<f2> w") 'where-is)
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region) ;; (un)comment
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
+(global-set-key (kbd "<f2> i") 'info)
+
 ;; navigation by sexp
 (global-set-key (kbd "<f2> <up>") 'backward-sexp)
 (global-set-key (kbd "<f2> <down>") 'forward-sexp)
@@ -63,3 +65,6 @@
 (global-set-key "\M-9" 'backward-sexp)
 (global-set-key "\M-0" 'forward-sexp)
 (global-set-key "\M-1" 'delete-other-windows)
+
+;; or some other keybinding...
+;;(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)

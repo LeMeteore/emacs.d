@@ -200,6 +200,6 @@ display-time-mail-file nil)
 (setq ag-executable "/usr/local/bin/ag")
 (setq ag-reuse-window 't)
 
-;; aggressive indent
-(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-(add-hook 'python-mode-hook #'aggressive-indent-mode)
+;; nginx mode
+(require 'nginx-mode)
+(add-to-list 'auto-mode-alist '("/etc/nginx/sites-availabe/.*" . nginx-mode))
