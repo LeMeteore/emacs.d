@@ -15,11 +15,11 @@ user."
   "call 'git add [current-buffer]'"
   (interactive)
   (let* ((buffile (buffer-file-name))
-          (output (shell-command-to-string
-                     (concat "git add " (buffer-file-name)))))
+         (output (shell-command-to-string
+                  (concat "git add " (buffer-file-name)))))
     (message (if (not (string= output ""))
-                  output
-                  (concat "Added " buffile)))))
+                 output
+               (concat "Added " buffile)))))
 
 
 ;; function to return the name of the parent directory of the currently visited file
@@ -98,7 +98,7 @@ user."
   ;; def 2 vars, process-connextion-type, default true & process
   (let ((process-connection-type t)
         process)
-     ;; do this
+    ;; do this
     (unwind-protect
         ;; eval this, and return value of last seq
         (progn

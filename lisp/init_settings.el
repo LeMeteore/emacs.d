@@ -205,7 +205,3 @@ display-time-mail-file nil)
 (add-to-list 'auto-mode-alist '("/etc/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode))
 (add-to-list 'auto-mode-alist '("nginx\\.conf\\'" . nginx-mode))
 (add-to-list 'auto-mode-alist '("/etc/nginx/.+\\.conf\\'" . nginx-mode))
-
-;; aggressive indent
-(setq aggressive-indent-excluded-modes
-      (remove 'python-mode aggressive-indent-excluded-modes))
