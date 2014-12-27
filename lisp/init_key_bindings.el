@@ -29,6 +29,7 @@
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region) ;; (un)comment
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
 (global-set-key (kbd "<f2> i") 'info)
+(global-set-key (kbd "<f5>") 'revert-buffer)
 
 ;; navigation by sexp
 (global-set-key (kbd "<f2> <up>") 'backward-sexp)
