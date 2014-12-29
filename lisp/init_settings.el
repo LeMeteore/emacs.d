@@ -115,10 +115,14 @@ display-time-mail-file nil)
 (display-time)
 
 ;; utf-8 all the time
-(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(set-language-environment 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-selection-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
 
 ; Don't want any startup message
 (setq inhibit-startup-message   t)
@@ -140,6 +144,16 @@ display-time-mail-file nil)
 
 ;; display a custom welcome message
 (display-startup-echo-area-message )
+
+;; nicer naming of buffers with identical names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator " + ")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+
+;; don't confirm opening non-existant files/buffers
+(setq confirm-nonexistent-file-or-buffer nil)
 
 ;; custom scratch message
 (setq initial-scratch-message ";; I am your editor, please describe your program.\n")
@@ -168,14 +182,14 @@ display-time-mail-file nil)
 
 ;; abbrev
 (setq abbrev-file-name             ;; tell emacs where to read abbrev
-        "~/.emacs.d/abbrev_defs")    ;; definitions from...
+      "~/.emacs.d/abbrev_defs")    ;; definitions from...
 
 ;; save abbrevs when files are saved
 ;; you will be asked before the abbreviations are saved
 (setq save-abbrevs t)
 
 
-; Openwith
+;; Openwith
 (openwith-mode t)
 (setq openwith-associations
       (list (list (openwith-make-extension-regexp '("pdf"))
