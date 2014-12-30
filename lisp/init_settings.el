@@ -219,3 +219,6 @@ display-time-mail-file nil)
 (add-to-list 'auto-mode-alist '("/etc/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode))
 (add-to-list 'auto-mode-alist '("nginx\\.conf\\'" . nginx-mode))
 (add-to-list 'auto-mode-alist '("/etc/nginx/.+\\.conf\\'" . nginx-mode))
+
+;; multiple cursors
+(require 'multiple-cursors)
