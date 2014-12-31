@@ -30,6 +30,7 @@
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
 (global-set-key (kbd "<f2> p") 'package-list-packages)
 (global-set-key (kbd "<f2> k") 'kill-emacs)
+(global-set-key (kbd "<f2> d") 'my-date)
 (global-set-key (kbd "<f2> i") 'info)
 (global-set-key (kbd "<f5>") 'revert-buffer)
 
