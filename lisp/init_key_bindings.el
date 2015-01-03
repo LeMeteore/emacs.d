@@ -72,3 +72,8 @@
 
 ;; or some other keybinding...
 ;;(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
+
+;; multiple info buffers keybindings
+(global-set-key "\C-hr" 'my-emacs-info)
+(global-set-key "\C-hj" 'my-elisp-info)
+(global-set-key "\C-ho" 'my-org-info)

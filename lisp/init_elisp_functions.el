@@ -197,3 +197,41 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
       (progn (setq p1 (point-min))
              (setq p2 (point-max))))
     (kill-region p1 p2)))
+
+
+;; open multiple info buffers
+
+;; (defun my-info (topic bufname)
+;;   "Read documentation for TOPIC in the info system.  Name the
+;; buffer BUFNAME.  If that buffer is already present, just switch
+;; to it."
+;;   (if (get-buffer bufname)
+;;       (switch-to-buffer bufname)
+;;     (info topic bufname)))
+
+
+
+;; (defun my-org-info ()
+;;   "Jump to Org-mode info buffer, creating it if necessary.  This
+;; is *not* the buffer \\[info] would jump to, it is a separate
+;; entity."
+;;   (interactive)
+;;   (my-info "org" "*Org Info*"))
+
+
+
+;; (defun my-elisp-info ()
+;;   "Jump to Emacs Lisp info buffer, creating it if necessary.  This
+;; is *not* the buffer \\[info] would jump to, it is a separate
+;; entity."
+;;   (interactive)
+;;   (my-info "elisp" "*Emacs Lisp Info*"))
+
+
+
+;; (defun my-emacs-info ()
+;;   "Jump to Emacs Lisp info buffer, creating it if necessary.  This
+;; is *not* the buffer \\[info] would jump to, it is a separate
+;; entity."
+;;   (interactive)
+;;   (my-info "emacs" "*Emacs Info*"))
