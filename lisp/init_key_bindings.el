@@ -29,10 +29,11 @@
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region) ;; (un)comment
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
 (global-set-key (kbd "<f2> p") 'package-list-packages)
-(global-set-key (kbd "<f2> k") 'kill-emacs)
+(global-set-key (kbd "<f2> q") 'kill-emacs)
 (global-set-key (kbd "<f2> d") 'my-date)
 (global-set-key (kbd "<f2> i") 'info)
 (global-set-key (kbd "<f5>") 'revert-buffer)
+
 
 ;; navigation by sexp
 (global-set-key (kbd "<f2> <up>") 'backward-sexp)
@@ -53,7 +54,7 @@
 (defalias 'mgs 'magit-status)
 (defalias 'detach 'delete-frame) ;; C-x 5 0
 
-;(defalias 'ipl ('describe-variable package-activated-list))
+                                        ;(defalias 'ipl ('describe-variable package-activated-list))
 
 (global-set-key (kbd "<f2> <left>")  'windmove-left)
 (global-set-key (kbd "<f2> <right>") 'windmove-right)
@@ -63,12 +64,9 @@
 (key-chord-define-global "zz"     'undo)
 (key-chord-define-global "yy"     'redo)
 (key-chord-define-global "vv"     'find-file)
-(key-chord-define-global "hh"     'dired)
+(key-chord-define-global "hh"     (lambda () (interactive) (dired "~/.emacs.d/")))
 (key-chord-define-global "qq"     'ddg)
 
-(global-set-key "\M-9" 'backward-sexp)
-(global-set-key "\M-0" 'forward-sexp)
-(global-set-key "\M-1" 'delete-other-windows)
 
 ;; or some other keybinding...
 ;;(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
@@ -77,3 +75,11 @@
 (global-set-key "\C-hr" 'my-emacs-info)
 (global-set-key "\C-hj" 'my-elisp-info)
 (global-set-key "\C-ho" 'my-org-info)
+
+;; quickly open some files
+(global-set-key (kbd "<f6> h") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_hooks.el")))
+(global-set-key (kbd "<f6> p") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_load_packages.el")))
+(global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
+(global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
+;; git
+(global-set-key (kbd "<f6> a") 'git-add-current-buffer)
