@@ -10,7 +10,7 @@
 
 ;; guide key
 (require 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c" "<f2>" "<f6>"))
 (guide-key-mode 1)  ; Enable guide-key-mode
 
 ;; end files with a newline
