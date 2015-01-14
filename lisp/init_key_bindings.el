@@ -56,6 +56,10 @@
 (defalias 'g 'grep)
 (defalias 'mgs 'magit-status)
 (defalias 'detach 'delete-frame) ;; C-x 5 0
+;; I should normally stick to standard first & rest
+(defalias 'head 'car)
+(defalias 'tail 'cdr)
+
 
                                         ;(defalias 'ipl ('describe-variable package-activated-list))
 
