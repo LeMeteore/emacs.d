@@ -61,8 +61,7 @@
 (defalias 'tail 'cdr)
 
 
-                                        ;(defalias 'ipl ('describe-variable package-activated-list))
-
+;; (defalias 'ipl ('describe-variable package-activated-list))
 (global-set-key (kbd "<f2> <left>")  'windmove-left)
 (global-set-key (kbd "<f2> <right>") 'windmove-right)
 (global-set-key (kbd "<f2> <up>")    'windmove-up)
@@ -90,3 +89,8 @@
 (global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
 ;; git
 (global-set-key (kbd "<f6> a") 'git-add-current-buffer)
+
+
+;; from emax redux
+(global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1)))
+;;(global-set-key (kbd "C-<TAB>") (lambda () (interactive) (other-window -1)))

@@ -1,5 +1,18 @@
 ;; -*- coding: utf-8 -*-
 
+(defvar toggle-window-backward nil)
+
+(defun last-window ()
+  (interactive)
+  (cond
+   (toggle-window-backward
+    (setq toggle-window-backward nil)
+    (other-window -1))
+   (t
+    (setq toggle-window-backward t)
+    (other-window 1))))
+
+
 (defun djcb-find-file-as-root ()
   "Like `ido-find-file, but automatically edit the file with
 root-privileges (using tramp/sudo), if the file is not writable by
