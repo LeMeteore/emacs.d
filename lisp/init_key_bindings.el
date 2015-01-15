@@ -94,3 +94,9 @@
 ;; from emax redux
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1)))
 ;;(global-set-key (kbd "C-<TAB>") (lambda () (interactive) (other-window -1)))
+
+;; use keypad as extra function key, from ergoemacs; not working within emacs-nox
+(global-set-key (kbd "<kp-0>") 'delete-window)
+(global-set-key (kbd "<kp-1>") 'delete-other-windows)
+(global-set-key (kbd "<kp-2>") 'split-window-vertically)
+(global-set-key (kbd "<kp-3>") 'xah-open-file-at-cursor)
