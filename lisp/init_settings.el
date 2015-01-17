@@ -222,3 +222,13 @@ display-time-mail-file nil)
 
 ;; multiple cursors
 (require 'multiple-cursors)
+
+;; psql
+;; (eval-after-load "sql"
+;;   '(progn
+;;      (sql-set-product 'postgres)
+;;      )
+;;   )
+
+;; switch to help window directly
+(advice-add 'describe-mode :after '(lambda (&rest args) (call-interactively 'other-window)))
