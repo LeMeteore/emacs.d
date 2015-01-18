@@ -1,8 +1,24 @@
 ;; -*- coding: utf-8 -*-
 
-(defvar toggle-window-backward nil)
+(defun my-mark-this-window-as-main ()
+  "Mark the current window as the main window."
+  (interactive)
+  (mapc (lambda (win) (set-window-parameter win 'main nil))
+        (window-list))
+  (set-window-parameter nil 'main t))
 
-(defun last-window ()
+(defun my-get-main-window()
+  "Find and return the main window or nil if non exists."
+  (cl-find-if (lambda (win) (window-parameter win 'main)) (window-list)))
+
+(defun my-just-my-main-window ()
+  "Show only the main window"
+  (interactive)
+  (delete-other-windows (my-get-main-window)))
+
+
+(defvar toggle-window-backward nil)
+(defun my-last-window ()
   (interactive)
   (cond
    (toggle-window-backward
@@ -134,25 +150,25 @@ user."
 
 (defun ddg ()
   "Look up the word under cursor or selected region in ddg. This command switches you to firefox."
- (interactive)
- ;; myWord & myUrl variables
- (let (myWord myUrl)
-   ;; myWord is selected region or word the point is under
-   (setq myWord
-         (if (use-region-p)
-             (buffer-substring-no-properties (region-beginning) (region-end))
-           (thing-at-point 'symbol)))
-   ;; replace space by plus in the word
-  (setq myWord (replace-regexp-in-string " " "+" myWord))
-  (setq myUrl (concat "https://duckduckgo.com/?t=lm&q=" myWord))
-  (browse-url-firefox myUrl)
-   ))
+  (interactive)
+  ;; myWord & myUrl variables
+  (let (myWord myUrl)
+    ;; myWord is selected region or word the point is under
+    (setq myWord
+          (if (use-region-p)
+              (buffer-substring-no-properties (region-beginning) (region-end))
+            (thing-at-point 'symbol)))
+    ;; replace space by plus in the word
+    (setq myWord (replace-regexp-in-string " " "+" myWord))
+    (setq myUrl (concat "https://duckduckgo.com/?t=lm&q=" myWord))
+    (browse-url-firefox myUrl)
+    ))
 
 (defun duckduckgo (what)
   "Use ddg to search for WHAT."
   (interactive "sSearch: ")
   (browse-url-firefox (concat "https://duckduckgo.com/?t=lm&q="
-                          (url-unhex-string what))))
+                              (url-unhex-string what))))
 
 
 (defun display-startup-echo-area-message ()

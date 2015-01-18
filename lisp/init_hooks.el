@@ -12,3 +12,7 @@
 
 ;; aggressive indent
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
+;; mark window as main window
+;; (add-hook 'prog-mode-hook 'mark-this-window-as-main)
+;; (add-hook 'text-mode-hook 'mark-this-window-as-main)
