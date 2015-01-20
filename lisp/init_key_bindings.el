@@ -32,6 +32,7 @@
 (global-set-key (kbd "<f2> q") 'kill-emacs)
 (global-set-key (kbd "<f2> d") 'my-date)
 (global-set-key (kbd "<f2> i") 'info)
+(global-set-key (kbd "<f2> z") 'switch-to-minibuffer-window)
 (global-set-key (kbd "<f2> <home>") 'beginning-of-buffer)
 (global-set-key (kbd "<f2> <end>") 'end-of-buffer)
 

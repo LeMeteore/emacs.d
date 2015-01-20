@@ -16,3 +16,7 @@
 ;; mark window as main window
 ;; (add-hook 'prog-mode-hook 'mark-this-window-as-main)
 ;; (add-hook 'text-mode-hook 'mark-this-window-as-main)
+
+
+;; cancel minibuffer
+(add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)

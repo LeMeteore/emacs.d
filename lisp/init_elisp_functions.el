@@ -1,5 +1,16 @@
 ;; -*- coding: utf-8 -*-
 
+(defun switch-to-minibuffer-window ()
+  "switch to minibuffer window (if active)"
+  (interactive)
+  (when (active-minibuffer-window)
+    (select-window (active-minibuffer-window))))
+
+(defun stop-using-minibuffer ()
+  "kill the minibuffer"
+  (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
+    (abort-recursive-edit)))
+
 (defun move-region-to-other-window (start end)
   "Move selected text to other window"
   (interactive "r")
