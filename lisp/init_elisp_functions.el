@@ -1,5 +1,21 @@
 ;; -*- coding: utf-8 -*-
 
+(defun test-letter ()
+  (interactive)
+  (if (looking-at "[a-z-A-Z]")
+      (message "This is a letter")
+    (message "This is not a letter")))
+
+(defun test-letter1 ()
+  (interactive)
+  (let ((char (char-after)))
+    (if (and (eq (char-syntax char) ?w)
+             (or (> char ?9)
+                 (< char ?1)))
+        (message "This is a letter")
+      (message "This is not a letter"))))
+
+
 (defun count-words (start end)
   "Print number of words in the region."
   (interactive "r")
