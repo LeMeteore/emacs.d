@@ -39,7 +39,7 @@
 (global-set-key (kbd "<f2> <home>") 'beginning-of-buffer)
 (global-set-key (kbd "<f2> <end>") 'end-of-buffer)
 
-(global-set-key (kbd "<f5>") 'revert-buffer)
+(global-set-key (kbd "<f5>") (lambda () (interactive) (revert-buffer nil t)))
 
 
 ;; navigation by sexp
@@ -76,6 +76,7 @@
 (key-chord-define-global "vv"     'find-file)
 (key-chord-define-global "hh"     (lambda () (interactive) (dired "~/.emacs.d/")))
 (key-chord-define-global "qq"     'ddg)
+(key-chord-define-global "xs"     'save-buffer)
 
 
 ;; or some other keybinding...
