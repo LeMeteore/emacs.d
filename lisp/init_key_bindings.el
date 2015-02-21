@@ -60,6 +60,7 @@
 (defalias 'g 'grep)
 (defalias 'mgs 'magit-status)
 (defalias 'detach 'delete-frame) ;; C-x 5 0
+(defalias 'redo 'undo-tree-redo)
 ;; I should normally stick to standard first & rest
 (defalias 'head 'car)
 (defalias 'tail 'cdr)
@@ -71,13 +72,14 @@
 (global-set-key (kbd "<f2> <up>")    'windmove-up)
 (global-set-key (kbd "<f2> <down>")  'windmove-down)
 
-(key-chord-define-global "zz"     'undo)
-(key-chord-define-global "yy"     'redo)
-(key-chord-define-global "vv"     'find-file)
-(key-chord-define-global "hh"     (lambda () (interactive) (dired "~/.emacs.d/")))
+(key-chord-define-global "xu"     'undo)
+(key-chord-define-global "xr"     'redo)
+(key-chord-define-global "xf"     'find-file)
+(key-chord-define-global "xd"     (lambda () (interactive) (dired "~/.emacs.d/")))
 (key-chord-define-global "qq"     'ddg)
 (key-chord-define-global "xs"     'save-buffer)
-
+(key-chord-define-global "xk"     'kill-buffer)
+(key-chord-define-global "xb"     'ido-switch-buffer)
 
 ;; or some other keybinding...
 ;;(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
@@ -91,7 +93,7 @@
 (global-set-key (kbd "<f6> h") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_hooks.el")))
 (global-set-key (kbd "<f6> p") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_load_packages.el")))
 (global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
-(global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
+
 ;; git
 (global-set-key (kbd "<f6> a") 'git-add-current-buffer)
 
