@@ -29,7 +29,7 @@
 (global-set-key (kbd "<f2> w") 'where-is)
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region)
 (global-set-key (kbd "<f2> ;") 'endless/comment-line)
-(global-set-key (kbd "<f2> k") 'copy-line-or-region)
+(global-set-key (kbd "<f2> k") 'my-copy-line-or-region)
 (global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
 (global-set-key (kbd "<f2> p") 'package-list-packages)
 (global-set-key (kbd "<f2> q") 'kill-emacs)
