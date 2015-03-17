@@ -19,7 +19,7 @@
                 python-mode rich-minority s yasnippet yasnippet-bundle
                 use-package key-chord undo-tree guide-key move-text
                 openwith ack ag aggressive-indent nginx-mode multiple-cursors
-                smartparens)
+                smartparens with-editor)
   "A list of packages to ensure are installed at launch.")
 
 

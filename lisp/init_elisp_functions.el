@@ -1,4 +1,7 @@
 ;; -*- coding: utf-8 -*-
+(defun crontab-e ()
+  (interactive)
+  (with-editor-async-shell-command "crontab -e"))
 
 (defun test-letter ()
   (interactive)
