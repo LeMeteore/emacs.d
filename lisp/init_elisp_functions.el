@@ -7,9 +7,9 @@
       (browse-url-of-file (expand-file-name default-directory))
     (error "No `default-directory' to open")))
 
-;; (defun crontab-e ()
-;;   (interactive)
-;;   (with-editor-async-shell-command "crontab -e"))
+(defun crontab-e ()
+  (interactive)
+  (with-editor-async-shell-command "crontab -e"))
 
 ;; (defun incrontab-e ()
 ;;   (interactive)
