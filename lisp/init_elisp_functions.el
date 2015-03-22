@@ -1,7 +1,19 @@
 ;; -*- coding: utf-8 -*-
-(defun crontab-e ()
+
+(defun browse-file-directory ()
+  "Open the current file's directory however the OS would."
   (interactive)
-  (with-editor-async-shell-command "crontab -e"))
+  (if default-directory
+      (browse-url-of-file (expand-file-name default-directory))
+    (error "No `default-directory' to open")))
+
+;; (defun crontab-e ()
+;;   (interactive)
+;;   (with-editor-async-shell-command "crontab -e"))
+
+;; (defun incrontab-e ()
+;;   (interactive)
+;;   (with-editor-async-shell-command "incrontab -e"))
 
 (defun test-letter ()
   (interactive)
