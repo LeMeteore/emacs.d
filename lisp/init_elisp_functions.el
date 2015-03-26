@@ -1,5 +1,34 @@
 ;; -*- coding: utf-8 -*-
 
+(defun my-horizontal-recenter ()
+  "make the point horizontally centered in the window"
+  (interactive)
+  ;; middle of screen
+  (let ((mid (/ (window-width) 2))
+	;; current column
+	(cur (current-column)))
+    ;; if current position is after middle of window
+    (if (< mid cur)
+	;; scroll from left to right
+	(set-window-hscroll (selected-window) (- cur mid))
+      )))
+
+(defun my-vertical-recenter ()
+  "make the point vertically centered in the window"
+  (interactive)
+  ;; middle of screen
+  (let ((mid (/ (window-height) 2))
+	;; current line
+	(cur (+ 1 (count-lines 1 (point)))))
+    (message "mid is: %d" mid)
+    (message "cur is: %d" cur)
+    ;; if current position is after middle of window
+    (if (< mid cur)
+	;; scroll from 
+	(set-window-vscroll (selected-window) (- cur mid))
+      )))
+
+
 (defun browse-file-directory ()
   "Open the current file's directory however the OS would."
   (interactive)
