@@ -14,3 +14,4 @@
 (load "init_python")
 (load "init_ido")
 (load "init_mail")
+(load "init_font_lock")
