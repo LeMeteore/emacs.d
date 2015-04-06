@@ -20,3 +20,6 @@
 
 ;; cancel minibuffer
 (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
+
+;; haskell
+(add-hook 'haskell-mode-hook 'hi2-mode)
