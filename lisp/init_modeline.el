@@ -17,6 +17,9 @@
 ;; use setq-default to set it for /all/ modes, setq otherwise
 (setq-default mode-line-format
               (list
+               '(:eval (when server-buffer-clients
+                         (propertize (format "%d@" (length server-buffer-clients))
+                                     'face font-lock-keyword-face)))
                ;; the buffer name; the file name as a tool tip
                '(:eval (propertize "%b " 'face 'font-lock-keyword-face
                                    'help-echo (buffer-file-name)))
@@ -24,50 +27,49 @@
                ;;'(:eval (buffer-file-parent-directory))
 
                ;; line and column
-               " -- ";;"[" ;; '%02' to set to 2 chars at least; prevents flickering
+               "  ";;"[" ;; '%02' to set to 2 chars at least; prevents flickering
                '(:eval (when line-number-mode
-                         (let ((str (propertize "L:%02l" 'face 'font-lock-type-face)))
+                         (let ((str (propertize " L:%02l" 'face 'font-lock-type-face)))
                            (when (and (not (buffer-modified-p)) my-mode-line-buffer-line-count)
                              (setq str (propertize (concat str "/" my-mode-line-buffer-line-count) 'face 'font-lock-type-face)))
                            str)))
-               ", "
+               ;; ", "
                ;; (propertize "%02l" 'face 'font-lock-type-face) ","
-               (propertize "C:%02c" 'face 'font-lock-type-face)
+               (propertize " C:%02c " 'face 'font-lock-type-face)
                ;;"] "
                ;; relative position, size of file
-               " -- "
-               (propertize "P:%p" 'face 'font-lock-constant-face) ;; % above top
-               " "
-               (propertize "S:%I" 'face 'font-lock-constant-face) ;; size
+               "  "
+               (propertize " P:%p " 'face 'font-lock-constant-face) ;; % above top
+               ;;" "
+               (propertize " S:%I " 'face 'font-lock-constant-face) ;; size
                ;;"] "
                "   "
                ;; the current major mode for the buffer.
                ;;"["
 
-               '(:eval (propertize "%m" 'face 'font-lock-preprocessor-face
+               '(:eval (propertize " %m " 'face 'font-lock-preprocessor-face
                                    'help-echo buffer-file-coding-system))
                ;;"] "
-               " "
+               ;;" "
 
                ;;"[" ;; insert vs overwrite mode, input-method in a tooltip
-               '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+               '(:eval (propertize (if overwrite-mode "Ovr " "Ins ")
                                    'face 'font-lock-preprocessor-face
                                    'help-echo (concat "Buffer is in "
                                                       (if overwrite-mode "overwrite" "insert") " mode")))
 
                ;; was this buffer modified since the last save?
                '(:eval (when (buffer-modified-p)
-                         (concat ","  (propertize "Unsaved"
+                         (concat ":"  (propertize " Unsaved "
                                                   'face 'font-lock-warning-face
                                                   'help-echo "Buffer not yet saved"))))
 
                ;; is this buffer read-only?
                '(:eval (when buffer-read-only
-                         (concat ","  (propertize "Read Only"
+                         (concat ":"  (propertize " Read Only "
                                                   'face 'font-lock-type-face
                                                   'help-echo "Buffer is read-only"))))
                ;;"] "
-               "  "
 
                ;; add the time, with the date and the emacs uptime in the tooltip
                ;; '(:eval (propertize (format-time-string "%H:%M ")
@@ -84,6 +86,7 @@
                ;; minor-mode-alist  ;; list of minor modes
                ;;"%-" ;; fill with '-'
                ))
+
 
 
 (add-hook 'find-file-hook 'my-mode-line-count-lines)
