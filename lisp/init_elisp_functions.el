@@ -389,3 +389,36 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 ;; entity."
 ;;   (interactive)
 ;;   (my-info "emacs" "*Emacs Info*"))
+
+;; from ergoemacs http://ergoemacs.org/emacs/emacs_kill-ring.html
+
+(defun my-delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times.
+This command does not push erased text to kill-ring."
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
+
+(defun my-backward-delete-word (arg)
+  "Delete characters backward until encountering the beginning of a word.
+With argument, do this that many times.
+This command does not push erased text to kill-ring."
+  (interactive "p")
+  (my-delete-word (- arg)))
+
+(defun my-delete-line ()
+  "Delete text from current position to end of line char."
+  (interactive)
+  (delete-region
+   (point)
+   (save-excursion (move-end-of-line 1) (point)))
+  (delete-char 1))
+
+(defun my-delete-line-backward ()
+  "Delete text between the beginning of the line to the cursor position."
+  (interactive)
+  (let (x1 x2)
+    (setq x1 (point))
+    (move-beginning-of-line 1)
+    (setq x2 (point))
+    (delete-region x1 x2)))
