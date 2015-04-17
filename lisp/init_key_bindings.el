@@ -46,7 +46,7 @@
 (global-set-key (kbd "<f2> <up>") 'backward-sexp)
 (global-set-key (kbd "<f2> <down>") 'forward-sexp)
 
-
+(global-set-key (kbd "C-x f") 'find-file-in-project)
 
 ;; shortening of often used commands
 (defalias 'list-buffers 'ibuffer)
