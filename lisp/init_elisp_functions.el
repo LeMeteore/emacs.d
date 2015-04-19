@@ -8,6 +8,39 @@
 ;;   ;; print p1
 ;;   (message "%s" p1))
 
+
+(defun my-delete-surrounded-parens ()
+  (interactive)
+  ;; save where region begins & ends
+  (let ((beginning (region-beginning))
+        (end (region-end)))
+    (cond ((not (eq (char-after beginning) ?\())
+           ;; if region not begins by (, trigger error
+           (error "Char at region-begin not an open-parens"))
+          ((not (eq (char-before end) ?\)))
+           ;; if region not ends by ), trigger error
+           (error "Char at region-end not a close-parens"))
+          ;; save mark, pt, current buffer & execute body
+          ((save-excursion
+             (goto-char beginning)
+             (forward-sexp)
+             (not (eq (point) end)))
+           ;; if parens are not balanced, trigger error
+           (error "parens not balanced"))
+          (t (save-excursion
+               (goto-char end)
+               (delete-char -1)
+               (goto-char beginning)
+               (delete-char 1))))))
+
+(defun my-select-current-word ()
+  "Select the current word."
+  (interactive)
+  (beginning-of-thing 'symbol)
+  (push-mark (point) nil t)
+  (end-of-thing 'symbol)
+  (exchange-point-and-mark))
+
 (defun my-horizontal-recenter ()
   "make the point horizontally centered in the window"
   (interactive)
