@@ -78,6 +78,7 @@
 (key-chord-define-global "xd"     (lambda () (interactive) (dired "~/.emacs.d/")))
 (key-chord-define-global "qq"     'ddg)
 (key-chord-define-global "xs"     'save-buffer)
+(key-chord-define-global "ff"     'my-open-file-fast)
 (key-chord-define-global "xk"     'kill-buffer)
 (key-chord-define-global "xb"     'ido-switch-buffer)
 

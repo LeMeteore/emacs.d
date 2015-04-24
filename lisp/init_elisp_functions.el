@@ -1,5 +1,24 @@
 ;; -*- coding: utf-8 -*-
 
+(defvar my-filelist nil "alist for files i need to open frequently. Key is a short abbrev string, Value is file path string.")
+
+(setq my-filelist
+      '(
+        ("github" . "~/GITHUB/" )
+        ("init" . "~/.emacs.d/" )
+        ("wappa" . "~/envs/wappa/source/wappa/" )
+        ;; more here
+        ) )
+
+(defun my-open-file-fast ()
+  "Prompt to open a file from `my-filelist'.
+URL `http://ergoemacs.org/emacs/emacs_hotkey_open_file_fast.html'
+Version 2015-04-23"
+  (interactive)
+  (let ((ξabbrevCode
+         (ido-completing-read "Open:" (mapcar (lambda (ξx) (car ξx)) my-filelist))))
+    (find-file (cdr (assoc ξabbrevCode my-filelist)))))
+
 ;; create a list named p1
 ;; return a sorted list by string desc
 ;; the list to sort is a list of names as string (mapcar 'symbol-name (mapcar 'car package-alist))
