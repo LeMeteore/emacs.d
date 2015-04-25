@@ -72,7 +72,8 @@
 (global-set-key (kbd "<f2> <up>")    'windmove-up)
 (global-set-key (kbd "<f2> <down>")  'windmove-down)
 
-(key-chord-define-global "xu"     'undo)
+(key-chord-define-global [?x ?u]     'undo)
+(key-chord-define-global "''"     "`'\C-b")
 (key-chord-define-global "xr"     'redo)
 (key-chord-define-global "xf"     'find-file)
 (key-chord-define-global "xd"     (lambda () (interactive) (dired "~/.emacs.d/")))
