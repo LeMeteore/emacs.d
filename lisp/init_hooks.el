@@ -1,6 +1,13 @@
 ;; -*- coding: utf-8 -*-
 
-; linum mode only when programming
+;; because, it's too funny
+;; this code should be put somewhere else
+;; (add-hook 'mail-setup-hook 'spook)
+(defadvice compose-mail (after insert-spook activate)
+  (end-of-buffer)(spook)(backward-paragraph))
+
+
+;; linum mode only when programming
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; before save hooks
