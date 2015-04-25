@@ -99,7 +99,7 @@
 ;;(electric-indent-local-mode nil)
 
 ;; make return key also do indent, globally, not so cool
-;;(electric-indent-mode nil)
+(electric-indent-mode -1)
 
 
 ;; me
