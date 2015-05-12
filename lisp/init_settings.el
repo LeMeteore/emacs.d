@@ -1,7 +1,9 @@
 ;; -*- coding: utf-8 -*-
 
+
 ;; add new line if point at the end of buffer
-(setq next-line-add-newlines t)
+;; can be boring :\
+;; (setq next-line-add-newlines t)
 
 ;; move text
 (require 'move-text)
