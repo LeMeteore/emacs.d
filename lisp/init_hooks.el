@@ -30,3 +30,8 @@
 
 ;; haskell
 (add-hook 'haskell-mode-hook 'hi2-mode)
+
+;; jedi
+(add-hook 'python-mode-hook 'jedi:setup)
+;; optional
+(setq jedi:complete-on-dot t)
