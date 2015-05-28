@@ -3,7 +3,7 @@
 (require 'python-mode)
 
 ; use IPython
-(setq-default py-shell-name "ipython")
+(setq-default py-shell-name "ipython3")
 (setq-default py-which-bufname "IPython")
 
 ; use the wx backend, for both mayavi and matplotlib
