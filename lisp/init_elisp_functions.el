@@ -507,3 +507,10 @@ This command does not push erased text to kill-ring."
 ;;      (list (line-beginning-position) (line-beginning-position 2)))))
 
 ;; (advice-add 'kill-ring-save :before #'slick-copy)
+
+(defun my-wappa-project-grep ()
+  (interactive)
+  (helm-do-grep-1 '("~/envs/w/source/wappa")
+                  '(4)
+                  nil
+                  '("*.py")))
