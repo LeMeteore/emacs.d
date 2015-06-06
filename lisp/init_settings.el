@@ -31,11 +31,11 @@
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs_backup")))
 
 ;; Save all backup file in this directory.
-;(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/emacs_backup/"))))
+;; (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/emacs_backup/"))))
 
 ;; no toolbar
-;;(tool-bar-mode -1)
- ;; no menubar!
+(tool-bar-mode -1)
+;; no menubar!
 (menu-bar-mode -1)
 
 ;; yes or no to y or n
