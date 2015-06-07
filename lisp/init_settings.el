@@ -121,14 +121,32 @@ display-time-mail-file nil)
 (display-time)
 
 ;; utf-8 all the time
-(prefer-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-selection-coding-system 'utf-8)
-(setq coding-system-for-read 'utf-8)
-(setq coding-system-for-write 'utf-8)
+
+(set-language-environment 'utf-8-unix)
+(setq coding-system-for-read 'utf-8-unix)
+(setq coding-system-for-write 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-selection-coding-system 'utf-8-unix)
+(setq-default buffer-file-coding-system 'utf-8-unix)
+
+;; M-x describe-current-coding-system
+(add-to-list 'file-coding-system-alist '("\\.tex" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("\\.txt" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("\\.el" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("\\.scratch" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("\\.py" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("\\.sh" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("\\.php" . utf-8-unix) )
+(add-to-list 'file-coding-system-alist '("user_prefs" . utf-8-unix) )
+
+(add-to-list 'process-coding-system-alist '("\\.txt" . utf-8-unix) )
+(add-to-list 'network-coding-system-alist '("\\.txt" . utf-8-unix) )
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ; Don't want any startup message
 (setq inhibit-startup-message   t)
@@ -238,3 +256,6 @@ display-time-mail-file nil)
 
 ;; switch to help window directly
 (advice-add 'describe-mode :after '(lambda (&rest args) (call-interactively 'other-window)))
+
+;; magit do not revert files
+(setq magit-auto-revert-mode nil)
