@@ -33,5 +33,9 @@
 
 ;; jedi
 (add-hook 'python-mode-hook 'jedi:setup)
+
 ;; optional
 (setq jedi:complete-on-dot t)
+
+;; if the file is large, open it in fundamental mode
+(add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
