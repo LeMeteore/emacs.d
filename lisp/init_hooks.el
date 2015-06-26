@@ -7,9 +7,6 @@
   (end-of-buffer)(spook)(backward-paragraph))
 
 
-;; linum mode only when programming
-(add-hook 'prog-mode-hook 'linum-mode)
-
 ;; before save hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -38,4 +35,35 @@
 (setq jedi:complete-on-dot t)
 
 ;; if the file is large, open it in fundamental mode
-(add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+;; (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+
+(unless window-system
+  (add-hook 'linum-before-numbering-hook
+            (lambda ()
+              (setq-local linum-format-fmt
+                          (let ((w (length (number-to-string
+                                            (count-lines (point-min) (point-max))))))
+                            (concat "%" (number-to-string w) "d"))))))
+
+(defun linum-format-func-nw (line)
+  (concat
+   (propertize (format linum-format-fmt line) 'face 'linum)
+   (propertize " " 'face 'linum)))
+
+
+(unless window-system
+  (setq linum-format 'linum-format-func-nw))
+
+;; (if (equal window-system "x")
+;;     (setq linum-format 'linum-format-func)
+;;   (setq linum-format 'linum-format-func-nw))
+
+;;
+;; (setq linum-format 'linum-format-func)
+
+;; (when window-system
+;;   (setq linum-format 'linum-format-func-nw))
+
+;; linum mode only when pythoning
+(add-hook 'python-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'linum-mode)
