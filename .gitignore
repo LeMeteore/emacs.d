@@ -1,0 +1,14 @@
+.mc-lists.el
+.python-environments/
+ac-comphist.dat
+atext.txt
+autopair/
+elisp/modeline.el
+elpa/
+eshell/
+ido.last
+lisp/php/
+lisp/python-django.el
+tramp
+url/
+session.*
