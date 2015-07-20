@@ -116,3 +116,6 @@
 (global-set-key (kbd "<kp-1>") 'delete-other-windows)
 (global-set-key (kbd "<kp-2>") 'split-window-vertically)
 (global-set-key (kbd "<kp-3>") 'xah-open-file-at-cursor)
+
+;; recent files
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)

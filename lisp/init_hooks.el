@@ -67,3 +67,11 @@
 ;; linum mode only when pythoning
 (add-hook 'python-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
+
+;;
+(add-hook 'isearch-update-post-hook
+          (lambda ()
+            (when (> (length isearch-string) 0)
+              ;;or whatever
+              (recenter)))
+          nil t)

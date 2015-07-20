@@ -85,6 +85,8 @@
 ; keep a list of recently opened files
 (recentf-mode 1)
 (setq-default recent-save-file "~/.emacs.d/recentf")
+(setq recentf-max-menu-items 25)
+
 ; 1 for on, 0 for off | to have lines soft wrapped at word boundary
 (global-visual-line-mode 1)
 
