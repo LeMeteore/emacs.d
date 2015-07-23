@@ -261,3 +261,7 @@ display-time-mail-file nil)
 
 ;; magit do not revert files
 (setq magit-auto-revert-mode nil)
+
+;; rust lang
+(add-to-list 'load-path "/elpa/rust-mode-20150408.1716")
+(require 'rust-mode)

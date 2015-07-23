@@ -119,3 +119,7 @@
 
 ;; recent files
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+;; semicolon will insert semicolon then newline only for rust
+(defun my-rust-lang-mode-config ()
+  (local-set-key (kbd ";") (lambda () (interactive) (insert ";")(newline-and-indent))))

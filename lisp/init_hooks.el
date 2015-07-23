@@ -75,3 +75,6 @@
               ;;or whatever
               (recenter)))
           nil t)
+
+;; rustlang configuration
+(add-hook 'rust-mode-hook 'my-rust-lang-mode-config)
