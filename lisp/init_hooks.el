@@ -78,3 +78,6 @@
 
 ;; rustlang configuration
 (add-hook 'rust-mode-hook 'my-rust-lang-mode-config)
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (define-key rust-mode-map (kbd "<f5>") 'my-rust-save-compile-and-run)))

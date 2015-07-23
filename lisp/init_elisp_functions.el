@@ -521,3 +521,14 @@ This command does not push erased text to kill-ring."
     (setq buffer-read-only t)
     (buffer-disable-undo)
     (fundamental-mode)))
+
+;; a function to rust save, compile, run
+(defun my-rust-save-compile-and-run ()
+  (interactive)
+  (save-buffer)
+  (if (locate-dominating-file (buffer-file-name) "Cargo.toml")
+      (compile "cargo run")
+    (compile
+     (format "rustc %s & %s"
+             (buffer-file-name)
+             (file-name-sans-extension (buffer-file-name))))))
