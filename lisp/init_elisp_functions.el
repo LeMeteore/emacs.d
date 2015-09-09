@@ -532,3 +532,18 @@ This command does not push erased text to kill-ring."
      (format "rustc %s & %s"
              (buffer-file-name)
              (file-name-sans-extension (buffer-file-name))))))
+
+;; a function to save compile c program
+(defun my-c-save-compile ()
+  (interactive)
+  (save-buffer)
+  (compile
+   (format "cc -Wall -g    %s -o %s"
+           (buffer-file-name)
+           (file-name-sans-extension (buffer-file-name)))))
+
+;; a function to run c program
+(defun my-c-run ()
+  (interactive)
+  (compile (format "./%s"
+                   (file-name-base (buffer-file-name)))))

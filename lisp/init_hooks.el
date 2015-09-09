@@ -66,9 +66,11 @@
 
 ;; linum mode only when pythoning
 (add-hook 'python-mode-hook 'linum-mode)
+
+;; linum mode only when programming
 (add-hook 'prog-mode-hook 'linum-mode)
 
-;;
+;; ????
 (add-hook 'isearch-update-post-hook
           (lambda ()
             (when (> (length isearch-string) 0)
@@ -81,3 +83,12 @@
 (add-hook 'rust-mode-hook
           (lambda ()
             (define-key rust-mode-map (kbd "<f6>") 'my-rust-save-compile-and-run)))
+
+;; c programming configuration
+;; (add-hook 'c-mode-hook 'my-c-lang-mode-config)
+(add-hook 'c-mode-hook
+          (lambda ()
+            (define-key c-mode-map (kbd "<f5>") 'my-c-save-compile)))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
