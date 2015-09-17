@@ -534,16 +534,24 @@ This command does not push erased text to kill-ring."
              (file-name-sans-extension (buffer-file-name))))))
 
 ;; a function to save compile c program
+;; (defun my-c-save-compile ()
+;;   (interactive)
+;;   (save-buffer)
+;;   (compile
+;;    (format "cc -Wall -g    %s -o ./bin/%s"
+;;            (buffer-file-name)
+;;            (file-name-sans-extension (buffer-file-name)))))
+
 (defun my-c-save-compile ()
   (interactive)
   (save-buffer)
   (compile
-   (format "cc -Wall -g    %s -o %s"
+   (format "cc -Wall -g    %s -o ./bin/%s"
            (buffer-file-name)
-           (file-name-sans-extension (buffer-file-name)))))
+           (file-name-base (buffer-file-name)))))
 
 ;; a function to run c program
 (defun my-c-run ()
   (interactive)
-  (compile (format "./%s"
+  (compile (format "./bin/%s"
                    (file-name-base (buffer-file-name)))))
