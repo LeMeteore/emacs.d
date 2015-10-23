@@ -1,5 +1,8 @@
 ;; -*- coding: utf-8 -*-
 
+;; make emacs recognize my bash aliases and functions
+(setq shell-file-name "bash")
+(setq shell-command-switch "-ic")
 
 ;; add new line if point at the end of buffer
 ;; can be boring :\
@@ -265,3 +268,13 @@ display-time-mail-file nil)
 ;; rust lang
 (add-to-list 'load-path "/elpa/rust-mode-20150408.1716")
 (require 'rust-mode)
+
+;; js and json stuff
+(add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+
+
+;; dired compress commands based on file extension
+(defvar dired-compress-files-alist
+  '(("\\.tar\\.gz\\'" . "tar -c %i | gzip -c9 > %o")
+    ("\\.zip\\'" . "zip %o -r --filesync %i")))
