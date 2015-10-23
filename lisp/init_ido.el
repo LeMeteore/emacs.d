@@ -11,7 +11,7 @@
 
 ;; Find File At Point, also known generally as “ffap”,
 ;; is an intelligent system for opening files, and URLs.
-(setq ido-use-filename-at-point 'guess)
+;; (setq ido-use-filename-at-point 'guess)
 
 ;;You can disable URL ffap support by toggling
 ;;(ido-use-url-at-point)
