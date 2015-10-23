@@ -29,10 +29,10 @@
 (add-hook 'haskell-mode-hook 'hi2-mode)
 
 ;; jedi
-(add-hook 'python-mode-hook 'jedi:setup)
+;; (add-hook 'python-mode-hook 'jedi:setup)
 
 ;; optional
-(setq jedi:complete-on-dot t)
+;; (setq jedi:complete-on-dot t)
 
 ;; if the file is large, open it in fundamental mode
 ;; (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
@@ -92,3 +92,11 @@
 (add-hook 'c-mode-hook
           (lambda ()
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
+
+
+;; js and json stuff
+
+(defun js-custom-settings ()
+  (setq tab-width 2))
+
+(add-hook 'js-mode-hook 'js-custom-settings)
