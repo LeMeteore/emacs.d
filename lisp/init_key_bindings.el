@@ -123,3 +123,7 @@
 ;; semicolon will insert semicolon then newline only for rust
 (defun my-rust-lang-mode-config ()
   (local-set-key (kbd ";") (lambda () (interactive) (insert ";")(newline-and-indent))))
+
+
+;; keybiding available onyl in dired mode
+;; (define-key dired-mode-map "c" 'dired-do-compress-to)
