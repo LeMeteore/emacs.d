@@ -1,5 +1,8 @@
 ;; -*- coding: utf-8 -*-
 
+;; don't let the cursor go into minibuffer prompt
+(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+
 ;; make emacs recognize my bash aliases and functions
 (setq shell-file-name "bash")
 (setq shell-command-switch "-ic")

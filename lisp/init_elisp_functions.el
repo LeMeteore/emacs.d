@@ -576,3 +576,7 @@ This command does not push erased text to kill-ring."
   (compile
    (format "python3.4 %s"
            (buffer-file-name))))
+
+(defun my-lsb-release ()
+  (interactive)
+  (shell-command (format "lsb_release -a | sed -n '$p' | awk '{print $2}'")))

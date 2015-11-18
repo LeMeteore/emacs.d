@@ -13,7 +13,7 @@ line."
           (lnum (match-string 2 line)))
       (when (and file (file-exists-p (concat default-directory file)))
         (find-file-other-window (concat default-directory file))
-        (and lnum (goto-line (string-to-number lnum)))))))
+        (and lnum (forward-line (string-to-number lnum)))))))
 
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -70,5 +70,3 @@ When `universal-argument' is called first, copy whole buffer (but respect `narro
           (set-buffer-modified-p nil)
           (message "File '%s' successfully renamed to '%s'."
                    name (file-name-nondirectory new-name)))))))
-
-(+ 1 2 3)
