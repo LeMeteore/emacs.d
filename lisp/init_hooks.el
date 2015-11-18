@@ -93,6 +93,10 @@
           (lambda ()
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "<f6>") 'my-python-run)))
+
 
 ;; js and json stuff
 

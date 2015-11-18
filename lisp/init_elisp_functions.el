@@ -1,5 +1,17 @@
 ;; -*- coding: utf-8 -*-
 
+(require 'cl)
+(require 'recentf)
+(defun find-last-killed-file ()
+  (interactive)
+  (let ((active-files (loop for buf in (buffer-list)
+                            when (buffer-file-name buf) collect it)))
+    (loop for file in recentf-list
+          unless (member file active-files) return (find-file file))))
+
+(define-key global-map (kbd "C-S-t") 'find-last-killed-file)
+
+
 (defvar my-filelist nil "alist for files i need to open frequently. Key is a short abbrev string, Value is file path string.")
 
 (setq my-filelist
@@ -555,3 +567,12 @@ This command does not push erased text to kill-ring."
   (interactive)
   (compile (format "./bin/%s"
                    (file-name-base (buffer-file-name)))))
+
+;; a function to run python scripts
+(defun my-python-run ()
+  (setq compilation-scroll-output t)
+  (interactive)
+  (save-buffer)
+  (compile
+   (format "python3.4 %s"
+           (buffer-file-name))))
