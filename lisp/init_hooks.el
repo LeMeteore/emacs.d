@@ -92,15 +92,27 @@
 (add-hook 'c-mode-hook
           (lambda ()
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
-
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map (kbd "<f6>") 'my-python-run)))
+
+;; a function to prettify symbol
+(defun my-add-pretty ()
+  "make some word or string show as pretty Unicode symbols"
+  (setq prettify-symbols-alist
+        '(
+          ("lambda" . 955) ; λ
+          ("->" . 8594)    ; →
+          ("=>" . 8658)    ; ⇒
+          ("map" . 8614)   ; ↦
+          ("import ipdb; ipdb.set_trace()" . 9632) ; ■
+          )))
+(add-hook 'python-mode-hook   (global-prettify-symbols-mode 1))
+(add-hook 'python-mode-hook 'my-add-pretty)
 
 
 ;; js and json stuff
 
 (defun js-custom-settings ()
   (setq tab-width 2))
-
 (add-hook 'js-mode-hook 'js-custom-settings)
