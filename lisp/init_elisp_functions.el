@@ -574,8 +574,16 @@ This command does not push erased text to kill-ring."
   (interactive)
   (save-buffer)
   (compile
-   (format "python3.4 %s"
+   (format "python3.5 %s"
            (buffer-file-name))))
+
+;; a function to insert breakpoints inside python script
+(defun my-python-add-breakpoint ()
+  "Add a break point"
+  (interactive)
+  (newline-and-indent)
+  (insert "import ipdb; ipdb.set_trace()"))
+
 
 (defun my-lsb-release ()
   (interactive)

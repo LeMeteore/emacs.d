@@ -95,6 +95,9 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map (kbd "<f6>") 'my-python-run)))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "<f7>") 'my-python-add-breakpoint)))
 
 ;; a function to prettify symbol
 (defun my-add-pretty ()
