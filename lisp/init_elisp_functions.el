@@ -588,3 +588,19 @@ This command does not push erased text to kill-ring."
 (defun my-lsb-release ()
   (interactive)
   (shell-command (format "lsb_release -a | sed -n '$p' | awk '{print $2}'")))
+
+
+(defun my-close-and-kill-this-pane ()
+  "If there are multiple windows, then close this pane and kill the buffer in it also."
+  (interactive)
+  (kill-this-buffer)
+  (if (not (one-window-p))
+      (delete-window)))
+
+(defun my-close-and-kill-next-pane ()
+  "If there are multiple windows, then close the other pane and kill the buffer in it also."
+  (interactive)
+  (other-window 1)
+  (kill-this-buffer)
+  (if (not (one-window-p))
+      (delete-window)))
