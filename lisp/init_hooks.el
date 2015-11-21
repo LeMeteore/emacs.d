@@ -94,7 +94,7 @@
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
 (add-hook 'python-mode-hook
           (lambda ()
-            (define-key python-mode-map (kbd "<f6>") 'my-python-run)))
+            (define-key python-mode-map (kbd "<f6>") 'py-execute-buffer)))
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map (kbd "<f7>") 'my-python-add-breakpoint)))
