@@ -43,8 +43,6 @@
 (global-set-key (kbd "<f2> d") 'my-date)
 
 (global-set-key (kbd "<f2> z") 'switch-to-minibuffer-window)
-(global-set-key (kbd "<f2> <home>") 'beginning-of-buffer)
-(global-set-key (kbd "<f2> <end>") 'end-of-buffer)
 
 (global-set-key (kbd "<f5>") (lambda () (interactive) (revert-buffer nil t)))
 
