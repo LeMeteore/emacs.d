@@ -4,7 +4,7 @@
 ;; this code should be put somewhere else
 ;; (add-hook 'mail-setup-hook 'spook)
 (defadvice compose-mail (after insert-spook activate)
-  (end-of-buffer)(spook)(backward-paragraph))
+  (goto-char (point-max))(spook)(backward-paragraph))
 
 
 ;; before save hooks
