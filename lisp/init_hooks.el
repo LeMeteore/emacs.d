@@ -98,6 +98,9 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map (kbd "<f7>") 'my-python-add-breakpoint)))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "\C-c\ \C-x") 'my-close-and-kill-next-pane)))
 
 ;; a function to prettify symbol
 (defun my-add-pretty ()
@@ -119,3 +122,9 @@
 (defun js-custom-settings ()
   (setq tab-width 2))
 (add-hook 'js-mode-hook 'js-custom-settings)
+
+
+;;
+(defun shell-hook ()
+  (text-scale-increase 1.1))
+(add-hook 'term-mode-hook 'shell-hook)
