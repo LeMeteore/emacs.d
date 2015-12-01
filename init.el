@@ -24,7 +24,10 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (misterioso))))
+ '(custom-enabled-themes (quote (misterioso)))
+ '(custom-safe-themes
+   (quote
+    ("870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

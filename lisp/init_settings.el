@@ -276,6 +276,8 @@ display-time-mail-file nil)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 
+;; a really nice theme
+(load-theme 'material)
 
 ;; dired compress commands based on file extension
 (defvar dired-compress-files-alist
