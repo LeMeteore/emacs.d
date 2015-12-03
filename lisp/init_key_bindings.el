@@ -10,10 +10,10 @@
   (define-key isearch-mode-map (kbd "<right>") 'isearch-repeat-forward) ; single key, useful
   )
 
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t)
 
 ;; create new empty buffer
-(global-set-key (kbd "C-n") 'my-empty-buffer)
+(global-set-key (kbd "C-S-n") 'my-empty-buffer)
 
 ;; next/previous user buffer
 (global-set-key (kbd "<f8>") 'my-previous-user-buffer)
@@ -37,7 +37,7 @@
 (global-set-key (kbd "<f2> c") 'comment-or-uncomment-region)
 (global-set-key (kbd "<f2> ;") 'endless/comment-line)
 (global-set-key (kbd "<f2> k") 'my-copy-line-or-region)
-(global-set-key (kbd "<f2> s") 'magit-status) ;; not sure
+(global-set-key (kbd "<f2> g") 'magit-status) ;; not sure
 (global-set-key (kbd "<f2> p") 'package-list-packages)
 (global-set-key (kbd "<f2> q") 'kill-emacs)
 (global-set-key (kbd "<f2> d") 'my-date)
