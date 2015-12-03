@@ -1,5 +1,11 @@
 ;; -*- coding: utf-8 -*-
 
+;; magit status, please use the whole screen
+(setq magit-post-display-buffer-hook
+      #'(lambda ()
+          (when (derived-mode-p 'magit-status-mode)
+            (delete-other-windows))))
+
 ;; because, it's too funny
 ;; this code should be put somewhere else
 ;; (add-hook 'mail-setup-hook 'spook)
