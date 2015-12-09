@@ -283,3 +283,14 @@ display-time-mail-file nil)
 (defvar dired-compress-files-alist
   '(("\\.tar\\.gz\\'" . "tar -c %i | gzip -c9 > %o")
     ("\\.zip\\'" . "zip %o -r --filesync %i")))
+
+;; yasnippets
+
+;; Develop in ~/emacs.d/mysnippets, but also
+;; try out snippets in ~/Downloads/interesting-snippets
+(setq yas-snippet-dirs '("~/.emacs.d/my-snippets"
+                         "~/.emacs.d/elpa/yasnippet-20151208.1603/snippets"))
+
+;; OR, keeping YASnippet defaults try out another snippets folder
+;; (setq yas-snippet-dirs (append yas-snippet-dirs
+;;                                '("~/.emacs/my-snippets")))
