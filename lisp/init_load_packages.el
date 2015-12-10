@@ -16,7 +16,7 @@
   '(color-theme db-pg db kv magit-push-remote magit-tramp
                 magit git-rebase-mode git-commit-mode pg
                 pretty-lambdada projectile pkg-info epl dash
-                python-mode rich-minority s yasnippet yasnippet-bundle
+                python-mode rich-minority s yasnippet
                 use-package key-chord undo-tree guide-key move-text
                 openwith ack ag aggressive-indent nginx-mode multiple-cursors
                 smartparens with-editor haskell-mode find-file-in-project jedi)
