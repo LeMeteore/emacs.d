@@ -124,13 +124,16 @@
 
 
 ;; js and json stuff
-
 (defun js-custom-settings ()
   (setq tab-width 2))
 (add-hook 'js-mode-hook 'js-custom-settings)
 
-
-;;
+;; shell function to increase font size
 (defun shell-hook ()
   (text-scale-increase 1.1))
 (add-hook 'term-mode-hook 'shell-hook)
+
+;;
+(require 'yasnippet)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)

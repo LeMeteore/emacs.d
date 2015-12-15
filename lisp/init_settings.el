@@ -1,11 +1,18 @@
 ;; -*- coding: utf-8 -*-
 
+;; auto revert mode
+(global-auto-revert-mode 1)
+
 ;; don't let the cursor go into minibuffer prompt
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
-;; make emacs recognize my bash aliases and functions
+;; make emacs recognize my bash aliases and functions & use bash as default shell
+(setq explicit-shell-file-name "/bin/bash")
 (setq shell-file-name "bash")
+(setq explicit-bash.exe-args '("--noediting" "--login" "-ic"))
 (setq shell-command-switch "-ic")
+(setenv "SHELL" shell-file-name)
+(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
 ;; add new line if point at the end of buffer
 ;; can be boring :\
@@ -284,12 +291,12 @@ display-time-mail-file nil)
   '(("\\.tar\\.gz\\'" . "tar -c %i | gzip -c9 > %o")
     ("\\.zip\\'" . "zip %o -r --filesync %i")))
 
-;; yasnippets
+;; yasnippets was installed manually, so
 
 ;; Develop in ~/emacs.d/mysnippets, but also
 ;; try out snippets in ~/Downloads/interesting-snippets
-(setq yas-snippet-dirs '("~/.emacs.d/my-snippets"
-                         "~/.emacs.d/elpa/yasnippet-20151208.1603/snippets"))
+;; (setq yas-snippet-dirs '("~/.emacs.d/my-snippets"
+;;                          "~/.emacs.d/elpa/yasnippet-20151208.1603/snippets"))
 
 ;; OR, keeping YASnippet defaults try out another snippets folder
 ;; (setq yas-snippet-dirs (append yas-snippet-dirs

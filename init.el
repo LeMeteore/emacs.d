@@ -28,11 +28,12 @@
  '(custom-safe-themes
    (quote
     ("870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" default)))
+ '(explicit-shell-file-name "/bin/bash")
  '(fci-rule-color "#3a3a3a")
  '(hl-sexp-background-color "#121212")
  '(package-selected-packages
    (quote
-    (yasnippet-bundle yasnippet w3m use-package undo-tree smartparens seq rust-mode rich-minority restclient pyvenv python-mode projectile pretty-lambdada openwith nim-mode nginx-mode names multiple-cursors move-text material-theme markdown-mode magit-tramp magit-push-remote key-chord json-reformat jedi jabber hi2 helm haskell-mode guide-key go-mode git-rebase-mode git-commit-mode find-file-in-project f elixir-mix drag-stuff db-pg color-theme alchemist aggressive-indent ag ack)))
+    (cargo racer rustfmt yasnippet-bundle yasnippet w3m use-package undo-tree smartparens seq rust-mode rich-minority restclient pyvenv python-mode projectile pretty-lambdada openwith nim-mode nginx-mode names multiple-cursors move-text material-theme markdown-mode magit-tramp magit-push-remote key-chord json-reformat jedi jabber hi2 helm haskell-mode guide-key go-mode git-rebase-mode git-commit-mode find-file-in-project f elixir-mix drag-stuff db-pg color-theme alchemist aggressive-indent ag ack)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
