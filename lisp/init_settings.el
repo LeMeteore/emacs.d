@@ -3,6 +3,9 @@
 ;; auto revert mode
 (global-auto-revert-mode 1)
 
+;;automatic tail for log files:  M-x auto-revert-tail-mode
+(add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-mode))
+
 ;; don't let the cursor go into minibuffer prompt
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
