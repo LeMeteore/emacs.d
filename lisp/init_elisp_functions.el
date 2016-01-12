@@ -568,6 +568,18 @@ This command does not push erased text to kill-ring."
   (compile (format "./bin/%s"
                    (file-name-base (buffer-file-name)))))
 
+;; a function to run go scripts
+(defun my-go-run ()
+  (interactive)
+  (compile (format "go run %s"
+                   (buffer-file-name))))
+
+;; a function to set gopath
+(defun my-setup-go-env ()
+  (defvar my-gopath)
+  (let ((my-gopath (shell-command-to-string "echo -n $GOPATH"))))
+  (setenv "GOPATH" my-gopath))
+
 ;; a function to run python scripts
 (defun my-python-run ()
   (setq compilation-scroll-output t)

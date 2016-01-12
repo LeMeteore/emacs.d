@@ -98,6 +98,30 @@
 (add-hook 'c-mode-hook
           (lambda ()
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
+
+;; golang
+(add-hook 'go-mode-hook
+          (lambda ()
+            (define-key go-mode-map (kbd "<f6>") 'my-go-run)))
+(add-hook 'go-mode-hook
+          (lambda () (add-hook 'before-save-hook  'gofmt-before-save)))
+(add-hook 'go-mode-hook
+          '(lambda () (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+(add-hook 'go-mode-hook
+          '(lambda () (local-set-key (kbd "C-c C-g") 'go-goto-imports)))
+(add-hook 'go-mode-hook
+          '(lambda () (local-set-key (kbd "C-c C-f") 'gofmt)))
+(add-hook 'go-mode-hook
+          '(lambda () (local-set-key (kbd "C-c C-k") 'godoc)))
+(add-hook 'go-mode-hook 'my-setup-go-env)
+
+;; (defun my-go-mode-before-save-hook ()
+;;   (when (eq major-mode 'go-mode)
+;;     (gofmt-before-save)
+;;     (message "It's never too early to start saving (go code)!")))
+;; (add-hook 'before-save-hook #'my-go-mode-before-save-hook)
+
+;; python
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map (kbd "<f6>") 'py-execute-buffer)))
