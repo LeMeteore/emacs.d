@@ -101,19 +101,25 @@
 
 ;; golang
 (add-hook 'go-mode-hook
+          'my-setup-go-env)
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook  'gofmt-before-save)))
+(add-hook 'go-mode-hook
           (lambda ()
             (define-key go-mode-map (kbd "<f6>") 'my-go-run)))
 (add-hook 'go-mode-hook
-          (lambda () (add-hook 'before-save-hook  'gofmt-before-save)))
+          (lambda ()
+            (define-key go-mode-map (kbd "C-c C-r") 'go-remove-unused-imports)))
 (add-hook 'go-mode-hook
-          '(lambda () (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+          (lambda ()
+            (define-key go-mode-map (kbd "C-c C-g") 'go-goto-imports)))
 (add-hook 'go-mode-hook
-          '(lambda () (local-set-key (kbd "C-c C-g") 'go-goto-imports)))
+          (lambda ()
+            (define-key go-mode-map (kbd "C-c C-f") 'gofmt)))
 (add-hook 'go-mode-hook
-          '(lambda () (local-set-key (kbd "C-c C-f") 'gofmt)))
-(add-hook 'go-mode-hook
-          '(lambda () (local-set-key (kbd "C-c C-k") 'godoc)))
-(add-hook 'go-mode-hook 'my-setup-go-env)
+          (lambda ()
+            (define-key go-mode-map (kbd "C-c C-k") 'godoc)))
 
 ;; (defun my-go-mode-before-save-hook ()
 ;;   (when (eq major-mode 'go-mode)

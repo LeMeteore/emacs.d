@@ -576,6 +576,7 @@ This command does not push erased text to kill-ring."
 
 ;; a function to set gopath
 (defun my-setup-go-env ()
+  (require 'go-mode)
   (defvar my-gopath)
   (let ((my-gopath (shell-command-to-string "echo -n $GOPATH"))))
   (setenv "GOPATH" my-gopath))
