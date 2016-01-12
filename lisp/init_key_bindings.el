@@ -96,13 +96,13 @@
 (global-set-key "\C-hj" 'my-elisp-info)
 (global-set-key "\C-ho" 'my-org-info)
 
-;; quickly open some files
-(global-set-key (kbd "<f6> h") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_hooks.el")))
-(global-set-key (kbd "<f6> p") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_load_packages.el")))
-(global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
+;; ;; quickly open some files
+;; (global-set-key (kbd "<f7> h") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_hooks.el")))
+;; (global-set-key (kbd "<f7> p") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_load_packages.el")))
+;; (global-set-key (kbd "<f6> k") (lambda () (interactive) (find-file "~/.emacs.d/lisp/init_key_bindings.el")))
 
 ;; git
-(global-set-key (kbd "<f6> a") 'git-add-current-buffer)
+;; (global-set-key (kbd "<f6> a") 'git-add-current-buffer)
 
 
 ;; from emax redux
