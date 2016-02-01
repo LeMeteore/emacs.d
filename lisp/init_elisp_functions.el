@@ -644,3 +644,20 @@ Version 2015-11-30"
       (start-process "" nil openFileProgram "."))
     ;; (shell-command "xdg-open .") ;; 2013-02-10 this sometimes froze emacs till the folder is closed. ⁖ with nautilus
     )))
+
+
+(defun xah-copy-rectangle-to-kill-ring (φbegin φend)
+  "Copy region as column (rectangle region) to `kill-ring'
+
+See also: `kill-rectangle', `copy-to-register'.
+URL `http://ergoemacs.org/emacs/emacs_copy_rectangle_text_to_clipboard.html'
+version 2015-11-16"
+  ;; extract-rectangle suggested by YoungFrog, 2012-07-25
+  (interactive "r")
+  (require 'rect)
+  (kill-new
+   (with-temp-buffer
+     (mapc (lambda (ξx) (insert ξx "\n"))
+           (extract-rectangle φbegin φend))
+     (delete-char -1)
+     (buffer-string))))
