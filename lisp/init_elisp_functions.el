@@ -558,7 +558,8 @@ This command does not push erased text to kill-ring."
   (interactive)
   (save-buffer)
   (compile
-   (format "cc -Wall -g    %s -o ./bin/%s"
+   ;; (format "cc -Wall -g    %s -o ./bin/%s"
+   (format "cc -Wall -Wextra -pedantic -std=c11 -g    %s -o ./bin/%s"
            (buffer-file-name)
            (file-name-base (buffer-file-name)))))
 
@@ -567,6 +568,12 @@ This command does not push erased text to kill-ring."
   (interactive)
   (compile (format "./bin/%s"
                    (file-name-base (buffer-file-name)))))
+
+;; a function to run c program when used input is needed
+(defun my-c-run-comint ()
+  (interactive)
+  (setq current-prefix-arg '(4))
+  (call-interactively 'compile))
 
 ;; a function to run go scripts
 (defun my-go-run ()
@@ -661,3 +668,8 @@ version 2015-11-16"
            (extract-rectangle φbegin φend))
      (delete-char -1)
      (buffer-string))))
+
+;; launch bash terminal
+(defun my-term ()
+  (interactive)
+  (term "/bin/bash"))

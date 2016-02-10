@@ -98,6 +98,9 @@
 (add-hook 'c-mode-hook
           (lambda ()
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (define-key c-mode-map (kbd "<f7>") 'my-c-run-comint)))
 
 ;; golang
 (add-hook 'go-mode-hook
