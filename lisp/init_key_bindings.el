@@ -41,6 +41,7 @@
 (global-set-key (kbd "<f2> p") 'package-list-packages)
 (global-set-key (kbd "<f2> q") 'kill-emacs)
 (global-set-key (kbd "<f2> d") 'my-date)
+(global-set-key (kbd "<f2> t") 'my-term)
 
 (global-set-key (kbd "<f2> z") 'switch-to-minibuffer-window)
 
