@@ -673,3 +673,16 @@ version 2015-11-16"
 (defun my-term ()
   (interactive)
   (term "/bin/bash"))
+
+
+;; search in all opened buffers
+(defun my-isearch-buffers ()
+  "isearch multiple buffers."
+  (interactive)
+  (multi-isearch-buffers
+   (delq nil (mapcar (lambda (buf)
+                       (set-buffer buf)
+                       (and (not (equal major-mode 'dired-mode))
+                            (not (string-match "^[ *]" (buffer-name buf)))
+                            buf))
+                     (buffer-list)))))
