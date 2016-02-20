@@ -1,5 +1,8 @@
 ;; -*- coding: utf-8 -*-
 
+;; remember cursor position, for emacs 25.1 or later
+(save-place-mode 1)
+
 ;; auto revert mode
 (global-auto-revert-mode 1)
 
