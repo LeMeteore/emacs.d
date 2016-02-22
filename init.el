@@ -23,17 +23,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
  '(custom-enabled-themes (quote (material)))
  '(custom-safe-themes
    (quote
-    ("870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" default)))
+    ("d4e9f95acd51433b776f1127143bbc7d0f1d41112d547e5b7a9a506be369dc39" "603a9c7f3ca3253cb68584cb26c408afcf4e674d7db86badcfe649dd3c538656" "0aa12caf6127772c1a38f7966de8258e7a0651fb6f7220d0bbb3a0232fba967f" "870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" default)))
  '(explicit-shell-file-name "/bin/bash")
- '(fci-rule-color "#3a3a3a")
- '(hl-sexp-background-color "#121212")
- '(package-selected-packages
-   (quote
-    (cargo racer rustfmt yasnippet-bundle yasnippet w3m use-package undo-tree smartparens seq rust-mode rich-minority restclient pyvenv python-mode projectile pretty-lambdada openwith nim-mode nginx-mode names multiple-cursors move-text material-theme markdown-mode magit-tramp magit-push-remote key-chord json-reformat jedi jabber hi2 helm haskell-mode guide-key go-mode git-rebase-mode git-commit-mode find-file-in-project f elixir-mix drag-stuff db-pg color-theme alchemist aggressive-indent ag ack)))
+ '(fci-rule-color "#37474f")
+ '(hl-sexp-background-color "#1c1f26")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

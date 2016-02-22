@@ -23,16 +23,11 @@
   "A list of packages to ensure are installed at launch.")
 
 
-(defun my-packages-installed-p ()
-  (loop for p in my-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
+;; install package if missing, for package in package list
+(dolist (p my-packages)
+  (unless (package-installed-p p)
+      (message "%s" "Get latest versions of all packages...")
+      (package-refresh-contents)
+      (message "%s" " done.")
+      (package-install p)))
 
-
-(unless (my-packages-installed-p)
-  ;; check for new packages (package versions)
-  (package-refresh-contents)
-  ;; install the missing packages
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
