@@ -686,3 +686,8 @@ version 2015-11-16"
                             (not (string-match "^[ *]" (buffer-name buf)))
                             buf))
                      (buffer-list)))))
+
+;; save all buffer when frame loses focus
+(defun my-save-all ()
+  (interactive)
+  (save-some-buffers t))

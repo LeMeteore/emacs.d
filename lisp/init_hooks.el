@@ -170,3 +170,6 @@
 (require 'yasnippet)
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;; save when the frame loses focus
+(add-hook 'focus-out-hook 'my-save-all)
