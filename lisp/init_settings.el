@@ -49,9 +49,6 @@
 ;; backup files
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs_backup")))
 
-;; Save all backup file in this directory.
-;; (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/emacs_backup/"))))
-
 ;; no toolbar
 (tool-bar-mode -1)
 ;; no menubar!
@@ -59,7 +56,6 @@
 
 ;; yes or no to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
-
 ;; default to ssh for tramp
 (setq tramp-default-method "ssh")
 
@@ -113,8 +109,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; set default tab char's display width to 4 spaces
-(setq-default tab-width 2) ; emacs 23.1, 24.2, default to 8
-
+;; emacs 23.1, 24.2, default to 8
 ;; set current buffer's tab char's display width to 4 spaces
 (setq-default tab-width 4)
 
@@ -142,7 +137,6 @@ display-time-mail-file nil)
 (display-time)
 
 ;; utf-8 all the time
-
 (set-language-environment 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
@@ -162,7 +156,6 @@ display-time-mail-file nil)
 (add-to-list 'file-coding-system-alist '("\\.sh" . utf-8) )
 (add-to-list 'file-coding-system-alist '("\\.php" . utf-8) )
 (add-to-list 'file-coding-system-alist '("user_prefs" . utf-8) )
-
 (add-to-list 'process-coding-system-alist '("\\.txt" . utf-8) )
 (add-to-list 'network-coding-system-alist '("\\.txt" . utf-8) )
 
@@ -289,21 +282,23 @@ display-time-mail-file nil)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 
-;; a really nice theme
-;; (load-theme 'material)
 
 ;; dired compress commands based on file extension
 (defvar dired-compress-files-alist
   '(("\\.tar\\.gz\\'" . "tar -c %i | gzip -c9 > %o")
     ("\\.zip\\'" . "zip %o -r --filesync %i")))
 
-;; yasnippets was installed manually, so
+;;; automatically set the height
+;; (setq default-frame-alist '((fullscreen . fullheight)))
 
-;; Develop in ~/emacs.d/mysnippets, but also
-;; try out snippets in ~/Downloads/interesting-snippets
-;; (setq yas-snippet-dirs '("~/.emacs.d/my-snippets"
-;;                          "~/.emacs.d/elpa/yasnippet-20151208.1603/snippets"))
+;;; 80 x 40 window size
+;; only works on startup, seems not valid for emacsclients?
+;; (setq default-frame-alist '((width . 80) (height . 45)))
 
-;; OR, keeping YASnippet defaults try out another snippets folder
-;; (setq yas-snippet-dirs (append yas-snippet-dirs
-;;                                '("~/.emacs/my-snippets")))
+;; only apply to the initial frame
+;; (if (window-system)
+;;     (set-frame-height (selected-frame) 40))
+
+;; the easiest way to configure the x window frame
+;; seems to be via .Xdefaults settings?!
+;; Emacs.geometry: 80x70 ?!

@@ -26,13 +26,16 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
- '(custom-enabled-themes (quote (material)))
+ '(custom-enabled-themes (quote (misterioso)))
  '(custom-safe-themes
    (quote
-    ("d4e9f95acd51433b776f1127143bbc7d0f1d41112d547e5b7a9a506be369dc39" "603a9c7f3ca3253cb68584cb26c408afcf4e674d7db86badcfe649dd3c538656" "0aa12caf6127772c1a38f7966de8258e7a0651fb6f7220d0bbb3a0232fba967f" "870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "d4e9f95acd51433b776f1127143bbc7d0f1d41112d547e5b7a9a506be369dc39" default)))
  '(explicit-shell-file-name "/bin/bash")
  '(fci-rule-color "#37474f")
  '(hl-sexp-background-color "#1c1f26")
+ '(package-selected-packages
+   (quote
+    (yasnippet w3m use-package undo-tree tao-theme smartparens seq rustfmt restclient racer pyvenv python-mode projectile pretty-lambdada openwith nim-mode nginx-mode names multiple-cursors move-text material-theme markdown-mode magit-tramp magit-push-remote key-chord json-reformat jedi jabber hi2 helm haskell-mode guide-key go-mode git-rebase-mode git-commit-mode find-file-in-project f elixir-mix drag-stuff db-pg color-theme cargo alchemist aggressive-indent ag ack)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
