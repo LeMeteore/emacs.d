@@ -135,3 +135,6 @@
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'keyboard-quit)
+
+;;;
+(define-key dired-mode-map (kbd "<f2> s") 'my-dired-get-size)
