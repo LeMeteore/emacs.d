@@ -702,3 +702,60 @@ version 2015-11-16"
                (progn
                  (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
                  (match-string 1))))))
+
+;; open terminal from dired
+(defun my-dired-open-term ()
+  "Open an `ansi-term' that corresponds to current directory."
+  (interactive)
+  (let ((current-dir (dired-current-directory)))
+    (term-send-string
+     (terminal)
+     (if (file-remote-p current-dir)
+         (let ((v (tramp-dissect-file-name current-dir t)))
+           (format "ssh %s@%s\n"
+                   (aref v 1) (aref v 2)))
+       (format "cd '%s'\n" current-dir)))))
+
+
+;;
+(require 'dired-aux)
+
+(defvar dired-filelist-cmd
+  '(("vlc" "-L")))
+
+(defun my-dired-start-process (cmd &optional file-list)
+  (interactive
+   (let ((files (dired-get-marked-files
+                 t current-prefix-arg)))
+     (list
+      (dired-read-shell-command "& on %s: "
+                                current-prefix-arg files)
+      files)))
+  (let (list-switch)
+    (start-process
+     cmd nil shell-file-name
+     shell-command-switch
+     (format
+      "nohup 1>/dev/null 2>/dev/null %s \"%s\""
+      (if (and (> (length file-list) 1)
+               (setq list-switch
+                     (cadr (assoc cmd dired-filelist-cmd))))
+          (format "%s %s" cmd list-switch)
+        cmd)
+      (mapconcat #'expand-file-name file-list "\" \"")))))
+
+
+;; kill the remaining buffer after exiting term :)
+(defun my-oleh-term-exec-hook ()
+  (let* ((buff (current-buffer))
+         (proc (get-buffer-process buff)))
+    (set-process-sentinel
+     proc
+     `(lambda (process event)
+        (if (string= event "finished\n")
+            (kill-buffer ,buff))))))
+
+
+;; for an easy way to paste inside term
+(eval-after-load "term"
+  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))

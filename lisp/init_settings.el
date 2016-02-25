@@ -302,3 +302,26 @@ display-time-mail-file nil)
 ;; the easiest way to configure the x window frame
 ;; seems to be via .Xdefaults settings?!
 ;; Emacs.geometry: 80x70 ?!
+
+;; association between file extension and command to use for opening
+(require 'dired-x)
+(setq dired-guess-shell-alist-user
+      '(("\\.pdf\\'" "evince" "okular")
+        ("\\.\\(?:djvu\\|eps\\)\\'" "evince")
+        ("\\.\\(?:jpg\\|jpeg\\|png\\|gif\\|xpm\\)\\'" "eog")
+        ("\\.\\(?:xcf\\)\\'" "gimp")
+        ("\\.csv\\'" "libreoffice")
+        ("\\.tex\\'" "pdflatex" "latex")
+        ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|ogv\\)\\(?:\\.part\\)?\\'"
+         "vlc")
+        ("\\.\\(?:mp3\\|flac\\)\\'" "rhythmbox")
+        ("\\.html?\\'" "firefox")
+        ("\\.cue?\\'" "audacious")))
+
+
+;; allow dired to delete or copy dir
+(setq dired-recursive-copies (quote always)) ; “always” means no asking
+(setq dired-recursive-deletes (quote top)) ; “top” means ask once
+
+;; copy from one windonw to the next
+(setq dired-dwim-target t)

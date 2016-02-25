@@ -42,6 +42,7 @@
 (global-set-key (kbd "<f2> q") 'kill-emacs)
 (global-set-key (kbd "<f2> d") 'my-date)
 (global-set-key (kbd "<f2> t") 'my-term)
+(global-set-key (kbd "<f2> j") 'dired-jump)
 
 (global-set-key (kbd "<f2> z") 'switch-to-minibuffer-window)
 
@@ -78,16 +79,16 @@
 (global-set-key (kbd "<f2> <up>")    'windmove-up)
 (global-set-key (kbd "<f2> <down>")  'windmove-down)
 
-(key-chord-define-global "1u"     'undo)
-(key-chord-define-global "''"     "`'\C-b")
-(key-chord-define-global "1r"     'redo)
-(key-chord-define-global "2f"     'find-file)
-(key-chord-define-global "1d"     (lambda () (interactive) (dired "~/.emacs.d/")))
-(key-chord-define-global "1q"     'ddg)
-(key-chord-define-global "1s"     'save-buffer)
-(key-chord-define-global "1f"     'my-open-file-fast)
-(key-chord-define-global "1k"     'kill-buffer)
-(key-chord-define-global "1b"     'ido-switch-buffer)
+;; (key-chord-define-global "1u"     'undo)
+;; (key-chord-define-global "''"     "`'\C-b")
+;; (key-chord-define-global "1r"     'redo)
+;; (key-chord-define-global "2f"     'find-file)
+;; (key-chord-define-global "1d"     (lambda () (interactive) (dired "~/.emacs.d/")))
+;; (key-chord-define-global "1q"     'ddg)
+;; (key-chord-define-global "1s"     'save-buffer)
+;; (key-chord-define-global "1f"     'my-open-file-fast)
+;; (key-chord-define-global "1k"     'kill-buffer)
+;; (key-chord-define-global "1b"     'ido-switch-buffer)
 
 ;; or some other keybinding...
 ;;(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
@@ -137,4 +138,8 @@
 (global-set-key [escape] 'keyboard-quit)
 
 ;;;
-(define-key dired-mode-map (kbd "<f2> s") 'my-dired-get-size)
+(define-key dired-mode-map "z" 'my-dired-get-size)
+(define-key dired-mode-map "j" 'dired-next-line)
+(define-key dired-mode-map "k" 'dired-previous-line)
+(define-key dired-mode-map "`" 'my-dired-open-term)
+(define-key dired-mode-map "r" 'dired-start-process)

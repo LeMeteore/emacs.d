@@ -173,3 +173,6 @@
 
 ;; save when the frame loses focus
 (add-hook 'focus-out-hook 'my-save-all)
+
+;; kill the remaining buffer after exiting term
+(add-hook 'term-exec-hook 'my-oleh-term-exec-hook)
