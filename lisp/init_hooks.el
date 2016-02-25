@@ -176,3 +176,8 @@
 
 ;; kill the remaining buffer after exiting term
 (add-hook 'term-exec-hook 'my-oleh-term-exec-hook)
+
+;; launch flycheck after init
+;; do not forget to install your checker tools
+;; pip install pylint
+(add-hook 'after-init-hook #'global-flycheck-mode)
