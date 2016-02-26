@@ -143,3 +143,8 @@
 (define-key dired-mode-map "k" 'dired-previous-line)
 (define-key dired-mode-map "`" 'my-dired-open-term)
 (define-key dired-mode-map "r" 'dired-start-process)
+
+
+;;; key to add a newline without moving cursor
+(global-set-key (kbd "<S-return>") 'my-insert-line-before)
+(global-set-key (kbd "<C-return>") 'my-insert-line-after)

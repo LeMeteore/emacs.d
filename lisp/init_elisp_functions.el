@@ -1,8 +1,15 @@
-;; -*- coding: utf-8 -*-
+;;; package --- Summary
+;;; -*- coding: utf-8 -*-
+
+;;; Commentary:
+;;; No comments
+
+;;; Code:
 
 (require 'cl)
 (require 'recentf)
 (defun find-last-killed-file ()
+  "Find last killed file."
   (interactive)
   (let ((active-files (loop for buf in (buffer-list)
                             when (buffer-file-name buf) collect it)))
@@ -12,7 +19,9 @@
 (define-key global-map (kbd "C-S-t") 'find-last-killed-file)
 
 
-(defvar my-filelist nil "alist for files i need to open frequently. Key is a short abbrev string, Value is file path string.")
+(defvar my-filelist nil
+  "Alist for files i need to open frequently.
+Key is a short abbrev string, Value is file path string.")
 
 (setq my-filelist
       '(
@@ -41,6 +50,7 @@ Version 2015-04-23"
 
 
 (defun my-delete-surrounded-parens ()
+  "Delete content between parens."
   (interactive)
   ;; save where region begins & ends
   (let ((beginning (region-beginning))
@@ -57,7 +67,7 @@ Version 2015-04-23"
              (forward-sexp)
              (not (eq (point) end)))
            ;; if parens are not balanced, trigger error
-           (error "parens not balanced"))
+           (error "Parens not balanced"))
           (t (save-excursion
                (goto-char end)
                (delete-char -1)
@@ -73,7 +83,7 @@ Version 2015-04-23"
   (exchange-point-and-mark))
 
 (defun my-horizontal-recenter ()
-  "make the point horizontally centered in the window"
+  "Make the point horizontally centered in the window."
   (interactive)
   ;; middle of screen
   (let ((mid (/ (window-width) 2))
@@ -86,18 +96,18 @@ Version 2015-04-23"
       )))
 
 (defun my-vertical-recenter ()
-  "make the point vertically centered in the window"
+  "Make the point vertically centered in the window."
   (interactive)
   ;; middle of screen
   (let ((mid (/ (window-height) 2))
-    ;; current line
-    (cur (+ 1 (count-lines 1 (point)))))
+        ;; current line
+        (cur (+ 1 (count-lines 1 (point)))))
     (message "mid is: %d" mid)
     (message "cur is: %d" cur)
     ;; if current position is after middle of window
     (if (< mid cur)
-    ;; scroll from
-    (set-window-vscroll (selected-window) (- cur mid))
+        ;; scroll from
+        (set-window-vscroll (selected-window) (- cur mid))
       )))
 
 
@@ -109,6 +119,7 @@ Version 2015-04-23"
     (error "No `default-directory' to open")))
 
 (defun crontab-e ()
+  "Launch crontab edition."
   (interactive)
   (with-editor-async-shell-command "crontab -e"))
 
@@ -117,12 +128,14 @@ Version 2015-04-23"
 ;;   (with-editor-async-shell-command "incrontab -e"))
 
 (defun test-letter ()
+  "Dummy letter tester."
   (interactive)
   (if (looking-at "[a-z-A-Z]")
       (message "This is a letter")
     (message "This is not a letter")))
 
 (defun test-letter1 ()
+  "Dummy letter tester again."
   (interactive)
   (let ((char (char-after)))
     (if (and (eq (char-syntax char) ?w)
@@ -133,7 +146,8 @@ Version 2015-04-23"
 
 
 (defun count-words (start end)
-  "Print number of words in the region."
+  "Print number of words in the region.
+The region is between START and END."
   (interactive "r")
   (save-excursion
     (save-restriction
@@ -142,7 +156,8 @@ Version 2015-04-23"
       (count-matches "\\sw+"))))
 
 (defun wc (&optional start end)
-  "Prints number of lines, words and characters in region or whole buffer."
+  "Prints number of lines, words and characters.
+Region is between START and END, or whole buffer."
   (interactive)
   (let ((n 0)
         (start (if mark-active (region-beginning) (point-min)))
@@ -165,18 +180,18 @@ With negative prefix, apply to -N lines above."
   (back-to-indentation))
 
 (defun switch-to-minibuffer-window ()
-  "switch to minibuffer window (if active)"
+  "Switch to minibuffer window (if active)."
   (interactive)
   (when (active-minibuffer-window)
     (select-window (active-minibuffer-window))))
 
 (defun stop-using-minibuffer ()
-  "kill the minibuffer"
+  "Kill the minibuffer."
   (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
     (abort-recursive-edit)))
 
 (defun move-region-to-other-window (start end)
-  "Move selected text to other window"
+  "Move selected text between START & END to other window."
   (interactive "r")
   (if (use-region-p)
       (let ((count (count-words-region start end)))
@@ -201,13 +216,14 @@ With negative prefix, apply to -N lines above."
   (cl-find-if (lambda (win) (window-parameter win 'main)) (window-list)))
 
 (defun my-just-my-main-window ()
-  "Show only the main window"
+  "Show only the main window."
   (interactive)
   (delete-other-windows (my-get-main-window)))
 
 
 (defvar toggle-window-backward nil)
 (defun my-last-window ()
+  "Retrive my last window."
   (interactive)
   (cond
    (toggle-window-backward
@@ -219,9 +235,8 @@ With negative prefix, apply to -N lines above."
 
 
 (defun djcb-find-file-as-root ()
-  "Like `ido-find-file, but automatically edit the file with
-root-privileges (using tramp/sudo), if the file is not writable by
-user."
+  "Like `ido-find-file, but automatically edit the file as root.
+All, using tramp/sudo, if the file is not writable by user."
   (interactive)
   (let ((file (ido-read-file-name "Edit as root: ")))
     (unless (file-writable-p file)
@@ -230,7 +245,7 @@ user."
 
 
 (defun git-add-current-buffer ()
-  "call 'git add [current-buffer]'"
+  "Call 'git add [current-buffer]'."
   (interactive)
   (let* ((buffile (buffer-file-name))
          (output (shell-command-to-string
@@ -249,7 +264,7 @@ user."
 
 ;; define function to shutdown emacs server instance
 (defun server-shutdown ()
-  "Save buffers, Quit, and Shutdown (kill) server"
+  "Save buffers, Quit, and Shutdown (kill) server."
   (interactive)
   (save-some-buffers)
   (kill-emacs)
@@ -257,7 +272,7 @@ user."
 
 ;;
 (defun byte-compile-current-buffer ()
-  "`byte-compile' current buffer if it's emacs-lisp-mode and compiled file exists."
+  "`byte-compile' current buffer if it's `emacs-lisp-mode' and compiled file exists."
   (interactive)
   ;;(when (equal major-mode 'Emacs-Lisp)) (byte-compile-file buffer-file-name))
   (when (and (equal major-mode 'emacs-lisp-mode)
@@ -265,6 +280,7 @@ user."
     (byte-compile-file buffer-file-name)))
 
 (defun auto-recompile-elisp-file ()
+  "Auto recompile elisp file."
   (interactive)
   (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
     (let ((byte-file (concat buffer-file-name "\\.elc")))
@@ -285,7 +301,7 @@ user."
 ;;      (format-time-string "%z")))))
 
 (defun my-date ()
-  "insert date"
+  "Insert current date."
   (interactive)
   (when (use-region-p)
     (delete-region (region-beginning) (region-end) )
@@ -303,6 +319,8 @@ user."
 
 
 (defun ssh-add-process-filter (process string)
+  "Call ssh-add from Emacs.
+Launch a PROCESS with STRING as command."
   (save-match-data
     (if (string-match ":\\s *\\'" string)
         (process-send-string process (concat (read-passwd string) "\n"))
@@ -310,7 +328,8 @@ user."
 
 
 (defun ssh-add (key-file)
-  "Run ssh-add to add a key to the running SSH agent. Let Emacs prompt for the passphrase."
+  "Run ssh-add to add KEY-FILE to the running SSH agent.
+Let Emacs prompt for the passphrase."
   ;; enter the path to an existing pubkey
   (interactive "fAdd key: \n")
   ;; def 2 vars, process-connextion-type, default true & process
@@ -338,7 +357,8 @@ user."
 
 
 (defun ddg ()
-  "Look up the word under cursor or selected region in ddg. This command switches you to firefox."
+  "Look up the word under cursor or selected region in ddg.
+This command lauches firefox."
   (interactive)
   ;; myWord & myUrl variables
   (let (myWord myUrl)
@@ -361,12 +381,13 @@ user."
 
 
 (defun display-startup-echo-area-message ()
+  "Display custom startup message in the echo area."
   (message "Welcome mister Nsukami_, I hope you're doing fine.!"))
 
 
 (defun my-next-user-buffer ()
   "Switch to the next user buffer.
- (buffer name does not start with “*”.)"
+Buffer name does not start with “*”."
   (interactive)
   (next-buffer)
   ;; i = 0
@@ -378,7 +399,7 @@ user."
 
 (defun my-previous-user-buffer ()
   "Switch to the previous user buffer.
- (buffer name does not start with “*”.)"
+buffer name does not start with “*”."
   (interactive)
   (previous-buffer)
   (let ((i 0))
@@ -458,15 +479,15 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 
 (defun my-delete-word (arg)
   "Delete characters forward until encountering the end of a word.
-With argument, do this that many times.
-This command does not push erased text to kill-ring."
+With ARG, do this that many times.
+This command does not push erased text to `kill-ring'."
   (interactive "p")
   (delete-region (point) (progn (forward-word arg) (point))))
 
 (defun my-backward-delete-word (arg)
   "Delete characters backward until encountering the beginning of a word.
-With argument, do this that many times.
-This command does not push erased text to kill-ring."
+With ARG, do this that many times.
+This command does not push erased text to `kill-ring'."
   (interactive "p")
   (my-delete-word (- arg)))
 
@@ -521,6 +542,7 @@ This command does not push erased text to kill-ring."
 ;; (advice-add 'kill-ring-save :before #'slick-copy)
 
 (defun my-wappa-project-grep ()
+  "Grep inside wappa project."
   (interactive)
   (helm-do-grep-1 '("~/envs/w/source/wappa")
                   '(4)
@@ -534,8 +556,8 @@ This command does not push erased text to kill-ring."
     (buffer-disable-undo)
     (fundamental-mode)))
 
-;; a function to rust save, compile, run
 (defun my-rust-save-compile-and-run ()
+  "Save, compile and run rust file."
   (interactive)
   (save-buffer)
   (if (locate-dominating-file (buffer-file-name) "Cargo.toml")
@@ -555,6 +577,7 @@ This command does not push erased text to kill-ring."
 ;;            (file-name-sans-extension (buffer-file-name)))))
 
 (defun my-c-save-compile ()
+  "Save, and compile c file."
   (interactive)
   (save-buffer)
   (compile
@@ -563,49 +586,55 @@ This command does not push erased text to kill-ring."
            (buffer-file-name)
            (file-name-base (buffer-file-name)))))
 
-;; a function to run c program
+
 (defun my-c-run ()
+  "Run c code."
   (interactive)
   (compile (format "./bin/%s"
                    (file-name-base (buffer-file-name)))))
 
-;; a function to run c program when used input is needed
+
 (defun my-c-run-comint ()
+  "Run c code when user input is needed."
   (interactive)
   (setq current-prefix-arg '(4))
   (call-interactively 'compile))
 
-;; a function to run go scripts
 (defun my-go-run ()
+  "Run golang code."
   (interactive)
   (compile (format "go run %s"
                    (buffer-file-name))))
 
-;; a function to set gopath
 (defun my-setup-go-env ()
+  "Set golang path for emacs."
   (require 'go-mode)
   (defvar my-gopath)
   (let ((my-gopath (shell-command-to-string "echo -n $GOPATH"))))
   (setenv "GOPATH" my-gopath))
 
-;; a function to run python scripts
+
 (defun my-python-run ()
-  (setq compilation-scroll-output t)
+  "Run python scripts."
   (interactive)
+  (defvar compilation-scroll-output)
+  (setq compilation-scroll-output t)
+
   (save-buffer)
   (compile
    (format "python3.5 %s"
            (buffer-file-name))))
 
-;; a function to insert breakpoints inside python script
+
 (defun my-python-add-breakpoint ()
-  "Add a break point"
+  "A function to insert breakpoints inside python script."
   (interactive)
   (newline-and-indent)
   (insert "import ipdb; ipdb.set_trace()"))
 
 
 (defun my-lsb-release ()
+  "Call lsb-release from Emacs."
   (interactive)
   (shell-command (format "lsb_release -a | sed -n '$p' | awk '{print $2}'")))
 
@@ -654,7 +683,8 @@ Version 2015-11-30"
 
 
 (defun xah-copy-rectangle-to-kill-ring (φbegin φend)
-  "Copy region as column (rectangle region) to `kill-ring'
+  "Copy region as column (rectangle region) to `kill-ring.x'.
+Region is from ΦBEGIN to ΦEND.
 
 See also: `kill-rectangle', `copy-to-register'.
 URL `http://ergoemacs.org/emacs/emacs_copy_rectangle_text_to_clipboard.html'
@@ -669,15 +699,14 @@ version 2015-11-16"
      (delete-char -1)
      (buffer-string))))
 
-;; launch bash terminal
 (defun my-term ()
+  "Launch bash terminal"
   (interactive)
   (term "/bin/bash"))
 
 
-;; search in all opened buffers
 (defun my-isearch-buffers ()
-  "isearch multiple buffers."
+  "Isearch multiple buffers."
   (interactive)
   (multi-isearch-buffers
    (delq nil (mapcar (lambda (buf)
@@ -687,13 +716,13 @@ version 2015-11-16"
                             buf))
                      (buffer-list)))))
 
-;; save all buffer when frame loses focus
 (defun my-save-all ()
+  "Save all buffer when frame loses focus."
   (interactive)
   (save-some-buffers t))
 
-;; get size of all marked items
 (defun my-dired-get-size ()
+  "Get size of all marked items inside dired buffer."
   (interactive)
   (let ((files (dired-get-marked-files)))
     (with-temp-buffer
@@ -703,7 +732,7 @@ version 2015-11-16"
                  (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
                  (match-string 1))))))
 
-;; open terminal from dired
+
 (defun my-dired-open-term ()
   "Open an `ansi-term' that corresponds to current directory."
   (interactive)
@@ -724,6 +753,8 @@ version 2015-11-16"
   '(("vlc" "-L")))
 
 (defun my-dired-start-process (cmd &optional file-list)
+  "Start process from dired buffer.
+The process cmd is CMD and the arguments to cmd is FILE-LIST."
   (interactive
    (let ((files (dired-get-marked-files
                  t current-prefix-arg)))
@@ -745,8 +776,8 @@ version 2015-11-16"
       (mapconcat #'expand-file-name file-list "\" \"")))))
 
 
-;; kill the remaining buffer after exiting term :)
 (defun my-oleh-term-exec-hook ()
+  "Kill the remaining buffer after exiting term."
   (let* ((buff (current-buffer))
          (proc (get-buffer-process buff)))
     (set-process-sentinel
@@ -757,5 +788,25 @@ version 2015-11-16"
 
 
 ;; for an easy way to paste inside term
+;; should be in keybings files
 (eval-after-load "term"
   '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
+
+
+(defun my-insert-line-after (times)
+  "Insert TIMES line(s) after current line."
+  (interactive "p")
+  (save-excursion
+    (move-end-of-line 1)
+    (newline times)))
+
+(defun my-insert-line-before (times)
+  "Insert TIMES line(s) before current line."
+  (interactive "p")
+  (save-excursion ;; store position
+    (move-beginning-of-line 1)
+    ;; C-u 6 C-RET to calls this 6 times
+    (newline times)))
+
+(provide 'init_elisp_functions.el)
+;;; init_elisp_functions.el ends here
