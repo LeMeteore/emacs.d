@@ -43,7 +43,7 @@
 (global-set-key (kbd "<f2> d") 'my-date)
 (global-set-key (kbd "<f2> t") 'my-term)
 (global-set-key (kbd "<f2> j") 'dired-jump)
-
+(global-set-key (kbd "<f2> n") 'neotree-toggle)
 (global-set-key (kbd "<f2> z") 'switch-to-minibuffer-window)
 
 (global-set-key (kbd "<f2> r") (lambda () (interactive) (revert-buffer nil t)))
