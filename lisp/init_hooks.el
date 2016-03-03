@@ -181,3 +181,7 @@
 ;; do not forget to install your checker tools
 ;; pip install pylint
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; aggresive indent mode only for lisp and c modes
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+(add-hook 'c-mode-hook #'aggressive-indent-mode)
