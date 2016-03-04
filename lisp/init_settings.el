@@ -3,6 +3,10 @@
 ;; remember cursor position, for emacs 25.1 or later
 (save-place-mode 1)
 
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
+
 ;; auto revert mode
 (global-auto-revert-mode 1)
 
@@ -42,6 +46,18 @@
 
 ;; scroll one line at a time
 (setq scroll-step 1)
+
+;; nice scrolling
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
+;; more useful frame title, that show either a file or a
+;; buffer name (if the buffer isn't visiting a file)
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
 
 ;; initial major mode, text, instead of lisp
 (setq initial-major-mode (quote text-mode))
