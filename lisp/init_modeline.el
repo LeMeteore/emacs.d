@@ -56,9 +56,9 @@
                ;;     '(eval (propertize (concat "venv:" pyvenv-virtual-env-name " ")
                ;;                        'face 'font-lock-keyword-face)))
 
-               '(:eval (propertize (if pyvenv-virtual-env-name
-                                       (concat " venv:" pyvenv-virtual-env-name " ") "")
-                                   'face 'font-lock-builtin-face))
+               ;; '(:eval (propertize (if pyvenv-virtual-env-name
+               ;;                         (concat " venv:" pyvenv-virtual-env-name " ") "")
+               ;;                     'face 'font-lock-builtin-face))
 
                ;;"[" ;; insert vs overwrite mode, input-method in a tooltip
                '(:eval (propertize (if overwrite-mode "Ovr " "Ins ")
