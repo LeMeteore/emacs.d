@@ -1,4 +1,15 @@
-;; -*- coding: utf-8 -*-
+;;; package --- Summary
+;;; -*- coding: utf-8 -*-
+
+;;; Commentary:
+;;; No comments
+
+;;; Code:
+
+
+;; interaction log
+(require 'interaction-log)
+(interaction-log-mode +1)
 
 ;; remember cursor position, for emacs 25.1 or later
 (save-place-mode 1)
@@ -6,6 +17,11 @@
 ;; reduce the frequency of garbage collection by making it happen on
 ;; each 50MB of allocated data (the default is on every 0.76MB)
 (setq gc-cons-threshold 50000000)
+
+;; disable beep
+(setq bell-volume 0)
+(setq sound-alist nil)
+;; (setq visible-bell 1)
 
 ;; auto revert mode
 (global-auto-revert-mode 1)

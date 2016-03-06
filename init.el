@@ -35,7 +35,7 @@
  '(hl-sexp-background-color "#1c1f26")
  '(package-selected-packages
    (quote
-    (multi-term neotree flycheck yasnippet w3m use-package undo-tree tao-theme smartparens seq rustfmt restclient racer pyvenv python-mode projectile pretty-lambdada openwith nim-mode nginx-mode names multiple-cursors move-text material-theme markdown-mode magit-tramp magit-push-remote key-chord json-reformat jedi jabber hi2 helm haskell-mode guide-key go-mode git-rebase-mode git-commit-mode find-file-in-project f elixir-mix drag-stuff db-pg color-theme cargo alchemist aggressive-indent ag ack)))
+    (interaction-log ace-popup-menu multi-term neotree flycheck yasnippet w3m use-package undo-tree tao-theme smartparens seq rustfmt restclient racer pyvenv python-mode projectile pretty-lambdada openwith nim-mode nginx-mode names multiple-cursors move-text material-theme markdown-mode magit-tramp magit-push-remote key-chord json-reformat jedi jabber hi2 helm haskell-mode guide-key go-mode git-rebase-mode git-commit-mode find-file-in-project f elixir-mix drag-stuff db-pg color-theme cargo alchemist aggressive-indent ag ack)))
  '(sql-database "postgres")
  '(sql-postgres-options (quote ("-P" "pager=on" "-W" "-U")))
  '(sql-server "localhost")

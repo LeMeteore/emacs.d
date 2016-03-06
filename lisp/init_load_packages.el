@@ -20,7 +20,7 @@
                 use-package key-chord undo-tree guide-key move-text
                 openwith ack ag aggressive-indent nginx-mode multiple-cursors
                 smartparens with-editor haskell-mode find-file-in-project jedi
-                flycheck neotree)
+                flycheck neotree interaction-log)
   "A list of packages to ensure are installed at launch.")
 
 

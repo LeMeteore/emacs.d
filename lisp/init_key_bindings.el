@@ -45,6 +45,8 @@
 (global-set-key (kbd "<f2> j") 'dired-jump)
 (global-set-key (kbd "<f2> n") 'neotree-toggle)
 (global-set-key (kbd "<f2> z") 'switch-to-minibuffer-window)
+;; (global-set-key (kbd "<f2> l")  (lambda () (interactive) (display-buffer ilog-buffer-name)))
+(global-set-key (kbd "<f2> l") 'ilog-show-in-new-frame)
 
 (global-set-key (kbd "<f2> r") (lambda () (interactive) (revert-buffer nil t)))
 
