@@ -129,7 +129,7 @@
 
 ;; keybiding available onyl in dired mode
 ;; (define-key dired-mode-map "c" 'dired-do-compress-to)
-
+(define-key dired-mode-map [mouse-1] 'dired-mouse-find-file)
 
 ;;; esc always quits
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
