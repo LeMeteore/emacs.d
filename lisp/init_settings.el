@@ -78,8 +78,21 @@
 ;; initial major mode, text, instead of lisp
 (setq initial-major-mode (quote text-mode))
 
-;; backup files
-(setq backup-directory-alist '(("" . "~/.emacs.d/emacs_backup")))
+
+;; Thanks to
+;; http://stackoverflow.com/questions/2020941/emacs-newbie-how-can-i-hide-the-buffer-files-that-emacs-creates
+
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
+(defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
+(setq backup-directory-alist (list (cons ".*" backup-dir)))
+(setq auto-save-list-file-prefix autosave-dir)
+(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosave/" t)
+(make-directory "~/.emacs.d/backup/" t)
 
 ;; no toolbar
 (tool-bar-mode -1)
