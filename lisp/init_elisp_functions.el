@@ -586,9 +586,10 @@ This command does not push erased text to `kill-ring'."
   (if (locate-dominating-file (buffer-file-name) "Cargo.toml")
       (compile "cargo run")
     (compile
-     (format "rustc %s & %s"
+     (format "rm -f %s && rustc %s && ./%s"
+             (file-name-sans-extension (file-name-base (buffer-file-name)))
              (buffer-file-name)
-             (file-name-sans-extension (buffer-file-name))))))
+             (file-name-sans-extension (file-name-base (buffer-file-name)))))))
 
 ;; a function to save compile c program
 ;; (defun my-c-save-compile ()
