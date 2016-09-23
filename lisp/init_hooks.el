@@ -85,10 +85,17 @@
           nil t)
 
 ;; rustlang configuration
-(add-hook 'rust-mode-hook 'my-rust-lang-mode-config)
+;; (add-hook 'rust-mode-hook 'my-rust-lang-mode-config)
 (add-hook 'rust-mode-hook
           (lambda ()
             (define-key rust-mode-map (kbd "<f6>") 'my-rust-save-compile-and-run)))
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (setq exec-path (append '("/home/nsukami/.cargo/bin/")
+                                    exec-path))))
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook  'rustfmt-format-buffer)))
 
 ;; c programming configuration
 ;; (add-hook 'c-mode-hook 'my-c-lang-mode-config)
@@ -142,18 +149,18 @@
             (define-key python-mode-map (kbd "\C-c\ \C-x") 'my-close-and-kill-next-pane)))
 
 ;; a function to prettify symbol
-(defun my-add-pretty ()
-  "make some word or string show as pretty Unicode symbols"
-  (setq prettify-symbols-alist
-        '(
-          ("lambda" . 955) ; λ
-          ("->" . 8594)    ; →
-          ("=>" . 8658)    ; ⇒
-          ("map" . 8614)   ; ↦
-          ("import ipdb; ipdb.set_trace()" . 9632) ; ■
-          )))
-(add-hook 'python-mode-hook   (global-prettify-symbols-mode 1))
-(add-hook 'python-mode-hook 'my-add-pretty)
+;; (defun my-add-pretty ()
+;;   "make some word or string show as pretty Unicode symbols"
+;;   (setq prettify-symbols-alist
+;;         '(
+;;           ("lambda" . 955) ; λ
+;;           ("->" . 8594)    ; →
+;;           ("=>" . 8658)    ; ⇒
+;;           ("map" . 8614)   ; ↦
+;;           ("import ipdb; ipdb.set_trace()" . 9632) ; ■
+;;           )))
+;; (add-hook 'python-mode-hook   (global-prettify-symbols-mode 1))
+;; (add-hook 'python-mode-hook 'my-add-pretty)
 
 
 ;; js and json stuff
@@ -185,3 +192,10 @@
 ;; aggresive indent mode only for lisp and c modes
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 (add-hook 'c-mode-hook #'aggressive-indent-mode)
+
+;;
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
+(provide 'init_hooks)
+;;; init_hooks.el ends here
