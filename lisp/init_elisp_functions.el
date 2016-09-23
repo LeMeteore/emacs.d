@@ -9,6 +9,32 @@
 (require 'cl)
 (require 'recentf)
 
+
+(eval-after-load 'dired
+  '(progn
+     (define-key dired-mode-map (kbd "C-c n") 'my-dired-create-file)
+
+     (defun my-dired-create-file (file)
+       "Create a file called FILE.
+If FILE already exists, signal an error."
+       (interactive
+        (list (read-file-name "Create file: " (dired-current-directory))))
+       (let* ((expanded (expand-file-name file))
+              (try expanded)
+              (dir (directory-file-name (file-name-directory expanded)))
+              new)
+         (if (file-exists-p expanded)
+             (error "Cannot create file %s: file exists" expanded))
+         ;; Find the topmost nonexistent parent dir (variable `new')
+         (while (and try (not (file-exists-p try)) (not (equal new try)))
+           (setq new try
+                 try (directory-file-name (file-name-directory try))))
+         (when (not (file-exists-p dir))
+           (make-directory dir t))
+         (write-region "" nil expanded t)
+         (when new
+           (dired-add-file new)
+           (dired-move-to-filename))))))
 ;;
 (defun dired-mouse-find-file (event)
   "In Dired, visit the file or directory name you click on."
@@ -831,6 +857,41 @@ The process cmd is CMD and the arguments to cmd is FILE-LIST."
     (move-beginning-of-line 1)
     ;; C-u 6 C-RET to calls this 6 times
     (newline times)))
+
+(defun my-empty-string-p (string)
+  "Return true if the string is empty or nil. Expects string."
+  (or (null string)
+      (zerop (length (trim string)))))
+
+(defun my-string-endswith-p (string suffix)
+  "Return t if STRING ends with SUFFIX."
+  (and (string-match (rx-to-string `(: ,suffix eos) t)
+                     string)
+       t))
+
+(defun my-string-startswith-p (string prefix)
+  "Return t if STRING starts with PREFIX."
+  (and (string-match (rx-to-string `(: bos ,prefix) t)
+                     string)
+       t))
+
+(defun my-kill-buffer-plus-frame ()
+  "Kill the current buffer plus current frame."
+  (interactive)
+  (kill-buffer)
+  (delete-frame))
+
+;; from enberg on #emacs
+(setq compilation-finish-functions
+      (lambda (buf str)
+        (if (null (string-match ".*exited abnormally.*" str))
+            ;;no errors, make the compilation window go away in a few seconds
+            (progn
+              (run-at-time
+               "2 sec" nil 'delete-windows-on
+               (get-buffer-create "*compilation*"))
+              (message "No Compilation Errors!")))))
+
 
 (provide 'init_elisp_functions.el)
 ;;; init_elisp_functions.el ends here
