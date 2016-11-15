@@ -101,7 +101,7 @@
 ;; (add-hook 'c-mode-hook 'my-c-lang-mode-config)
 (add-hook 'c-mode-hook
           (lambda ()
-            (define-key c-mode-map (kbd "<f5>") 'my-c-save-compile)))
+            (define-key c-mode-map (kbd "<f5>") 'my-c-compile)))
 (add-hook 'c-mode-hook
           (lambda ()
             (define-key c-mode-map (kbd "<f6>") 'my-c-run)))
@@ -172,6 +172,15 @@
 (defun shell-hook ()
   (text-scale-increase 1.1))
 (add-hook 'term-mode-hook 'shell-hook)
+
+;; (add-hook 'term-mode-hook
+;;           (lambda ()
+;;             (define-key term-raw-map (kbd "M-J") 'other-window)
+;;             (define-key term-raw-map (kbd "M-k") 'kill-buffer)))
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "C-z") 'self-insert-command)))
 
 ;;
 (require 'yasnippet)

@@ -626,13 +626,36 @@ This command does not push erased text to `kill-ring'."
 ;;            (buffer-file-name)
 ;;            (file-name-sans-extension (buffer-file-name)))))
 
+(defun my-buffer-contains-substring (string)
+  "Look for STRING inside buffer."
+  (save-excursion
+    (save-match-data
+      (goto-char (point-min))
+      (search-forward string nil t))))
+
+(defun my-c-compile ()
+  "Compile c source code."
+  (interactive)
+  (if (my-buffer-contains-substring "pthread")
+      (my-c-save-compile-link-pthread)
+    (my-c-save-compile)))
+
 (defun my-c-save-compile ()
   "Save, and compile c file."
   (interactive)
   (save-buffer)
   (compile
-   ;; (format "cc -Wall -g    %s -o ./bin/%s"
-   (format "cc -Wall -Wextra -pedantic -std=c11 -g    %s -o ./bin/%s"
+   ;; (format "cc -t -Wall -Wextra -pedantic -std=c11 -g %s -o ./bin/%s"
+   (format "cc -Wall -Wextra -pedantic -std=c11 -g %s -o ./bin/%s"
+           (buffer-file-name)
+           (file-name-base (buffer-file-name)))))
+
+(defun my-c-save-compile-link-pthread ()
+  "Save, and compile & link c file using pthreads."
+  (interactive)
+  (save-buffer)
+  (compile
+   (format "cc -Wall -Wextra -pedantic -std=c11 -g %s -o ./bin/%s -lpthread"
            (buffer-file-name)
            (file-name-base (buffer-file-name)))))
 
@@ -863,14 +886,14 @@ The process cmd is CMD and the arguments to cmd is FILE-LIST."
   (or (null string)
       (zerop (length (trim string)))))
 
-(defun my-string-endswith-p (string suffix)
+(defun my-string-endswith-p (string suffix) ;; blablabla
   "Return t if STRING ends with SUFFIX."
   (and (string-match (rx-to-string `(: ,suffix eos) t)
                      string)
        t))
 
 (defun my-string-startswith-p (string prefix)
-  "Return t if STRING starts with PREFIX."
+  "Return t if STRING start with PREFIX."
   (and (string-match (rx-to-string `(: bos ,prefix) t)
                      string)
        t))
@@ -892,6 +915,12 @@ The process cmd is CMD and the arguments to cmd is FILE-LIST."
                (get-buffer-create "*compilation*"))
               (message "No Compilation Errors!")))))
 
+(defun impaktor-move-end-of-line ()
+  "Move to end of line, before comment."
+  (interactive)
+  (when (comment-search-forward (line-end-position) t)
+    (goto-char (match-beginning 0))
+    (skip-syntax-backward " " (line-beginning-position))))
 
 (provide 'init_elisp_functions.el)
 ;;; init_elisp_functions.el ends here
